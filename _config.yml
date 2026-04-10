@@ -1,0 +1,12 @@
+title: AWS + OpenTofu
+description: Guias de instalacao e preparacao do ambiente do curso
+theme: minima
+markdown: kramdown
+header_pages:
+  - index.md
+  - requisitos.md
+  - instalacao-ubuntu.md
+  - aws-cli-ubuntu.md
+  - opentofu-ubuntu.md
+  - diretorio-e-vscode.md
+  - wsl-desempenho.md
