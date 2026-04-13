@@ -1,20 +1,20 @@
 ---
 layout: default
-title: 5. Diretorio do Projeto e VS Code
+title: 5. Diretório do Projeto e VS Code
 permalink: /diretorio-e-vscode/
 prev_title: 4. OpenTofu
 prev_url: /opentofu/
-next_title: 6. Visao Geral da Instalacao
+next_title: 6. Visão Geral da Instalação
 next_url: /visao-geral/
 optional_title: 7. Melhor desempenho no WSL
 optional_url: /wsl-desempenho/
 ---
 
-# 5. Diretorio do Projeto e VS Code
+# 5. Diretório do Projeto e VS Code
 
-Este passo organiza o ambiente do curso e garante que voce abra a pasta correta no `VS Code`.
+Este passo organiza o ambiente do curso e garante que você abra a pasta correta no `VS Code`.
 
-## 5.1 Se voce acabou de clonar o projeto
+## 5.1 Se você acabou de clonar o projeto
 
 No terminal, execute:
 
@@ -22,28 +22,28 @@ No terminal, execute:
 cd ~/cursos/aws-tofu
 ```
 
-Se quiser confirmar onde voce esta:
+Se quiser confirmar onde você está:
 
 ```bash
 pwd
 ```
 
-O caminho esperado sera parecido com:
+O caminho esperado será parecido com:
 
 ```bash
-/home/seu-usuario/cursos/aws-tofu
+/home/seu-usuário/cursos/aws-tofu
 ```
 
-## 5.2 Se voce ainda nao criou a pasta base
+## 5.2 Se você ainda não criou a pasta base
 
-Antes de clonar ou copiar os arquivos do curso, voce pode preparar a estrutura assim:
+Antes de clonar ou copiar os arquivos do curso, você pode preparar a estrutura assim:
 
 ```bash
 mkdir -p ~/cursos
 cd ~/cursos
 ```
 
-## 5.3 Abrir esse diretorio no VS Code
+## 5.3 Abrir esse diretório no VS Code
 
 Ainda dentro da pasta do curso, execute:
 
@@ -51,16 +51,16 @@ Ainda dentro da pasta do curso, execute:
 code .
 ```
 
-Isso abre o `VS Code` exatamente no diretorio atual.
+Isso abre o `VS Code` exatamente no diretório atual.
 
 ## 5.4 Se estiver usando WSL
 
-No `WSL`, siga estas orientacoes extras:
+No `WSL`, siga estas orientações extras:
 
 - crie a pasta dentro do Linux, por exemplo em `~/cursos/aws-tofu`;
-- nao trabalhe em caminhos como `/mnt/c/...`;
+- não trabalhe em caminhos como `/mnt/c/...`;
 - instale o `VS Code` no Windows;
-- use a extensao `WSL` no `VS Code`;
+- use a extensão `WSL` no `VS Code`;
 - abra a pasta a partir do terminal do Ubuntu com `code .`.
 
 Fluxo recomendado no `WSL`:
@@ -70,16 +70,16 @@ cd ~/cursos/aws-tofu
 code .
 ```
 
-## 5.5 Se o comando `code` nao funcionar
+## 5.5 Se o comando `code` não funcionar
 
 Verifique se o `VS Code` foi instalado corretamente.
 
 No Ubuntu nativo:
 
-- confirme a instalacao com `code --version`.
+- confirme a instalação com `code --version`.
 
 No `WSL`:
 
-- confirme se o `VS Code` esta instalado no Windows;
-- confirme se a extensao `WSL` esta instalada;
+- confirme se o `VS Code` está instalado no Windows;
+- confirme se a extensão `WSL` está instalada;
 - feche e abra novamente o terminal do Ubuntu e tente `code .` outra vez.

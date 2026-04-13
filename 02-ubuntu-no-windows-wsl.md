@@ -2,7 +2,7 @@
 layout: default
 title: 2. Ubuntu no Windows (WSL)
 permalink: /ubuntu-no-windows-wsl/
-prev_title: 1. Inicio
+prev_title: 1. Início
 prev_url: /
 next_title: 3. AWS CLI e Login
 next_url: /aws-cli-login/
@@ -12,14 +12,14 @@ optional_url: /wsl-desempenho/
 
 # 2. Ubuntu no Windows (WSL)
 
-Este guia cobre a preparacao do `Ubuntu` dentro do `WSL 2` para quem estuda no Windows.
+Este guia cobre a preparação do `Ubuntu` dentro do `WSL 2` para quem estuda no Windows.
 
-## 2.1 Distribuicao recomendada
+## 2.1 Distribuição recomendada
 
 Use preferencialmente:
 
 - `Ubuntu`
-- ou outra distribuicao baseada em Debian, se necessario
+- ou outra distribuição baseada em Debian, se necessário
 
 ## 2.2 Instalar o WSL 2
 
@@ -33,17 +33,17 @@ Depois:
 
 1. reinicie o computador, se o Windows solicitar;
 2. abra o Ubuntu instalado;
-3. conclua a criacao do seu usuario Linux;
-4. confirme se o WSL esta funcionando:
+3. conclua a criação do seu usuário Linux;
+4. confirme se o WSL está funcionando:
 
 ```powershell
 wsl --status
 ```
 
-## 2.3 Recomendacao para este curso
+## 2.3 Recomendação para este curso
 
 Depois de instalar o Ubuntu no `WSL 2`:
 
 - instale `AWS CLI` e `OpenTofu` dentro do Ubuntu;
 - para login na AWS CLI, use obrigatoriamente `aws login --remote`;
-- para editar os arquivos, use o `VS Code` no Windows com a extensao `WSL`.
+- para editar os arquivos, use o `VS Code` no Windows com a extensão `WSL`.

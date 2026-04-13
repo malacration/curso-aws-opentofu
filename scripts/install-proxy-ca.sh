@@ -12,7 +12,7 @@ Exemplos:
   install-proxy-ca.sh --target globo.com:443 --proxy proxy.empresa.local:8080 --sni globo.com
 
 O script:
-  1. captura a cadeia de certificados apresentada na conexao;
+  1. captura a cadeia de certificados apresentada na conexão;
   2. identifica os certificados de CA na cadeia;
   3. instala esses certificados no trust store do Ubuntu;
   4. executa update-ca-certificates;
@@ -20,15 +20,15 @@ O script:
   6. adiciona AWS_CA_BUNDLE em ~/.bashrc e ~/.zshrc, se esses arquivos existirem.
 
 Importante:
-  - para proxy com inspecao TLS, o ideal e confiar na CA do proxy;
-  - se a raiz da CA nao vier na cadeia, sera preciso exporta-la manualmente.
+  - para proxy com inspeção TLS, o ideal é confiar na CA do proxy;
+  - se a raiz da CA não vier na cadeia, será preciso exportá-la manualmente.
 EOF
 }
 
 require_cmd() {
   local cmd="$1"
   if ! command -v "$cmd" >/dev/null 2>&1; then
-    echo "Comando obrigatorio nao encontrado: $cmd" >&2
+    echo "Comando obrigatório não encontrado: $cmd" >&2
     exit 1
   fi
 }
@@ -42,17 +42,17 @@ append_export_if_missing() {
   local export_line="$2"
 
   if [[ ! -f "$rc_file" ]]; then
-    echo "Arquivo nao encontrado, nada a persistir: $rc_file"
+    echo "Arquivo não encontrado, nada a persistir: $rc_file"
     return 0
   fi
 
   if grep -Fxq "$export_line" "$rc_file"; then
-    echo "Configuracao ja existente em $rc_file"
+    echo "Configuração já existente em $rc_file"
     return 0
   fi
 
   printf '\n%s\n' "$export_line" >> "$rc_file"
-  echo "Configuracao adicionada em $rc_file"
+  echo "Configuração adicionada em $rc_file"
 }
 
 TARGET="globo.com:443"
@@ -91,7 +91,7 @@ while [[ $# -gt 0 ]]; do
       exit 0
       ;;
     *)
-      echo "Argumento invalido: $1" >&2
+      echo "Argumento inválido: $1" >&2
       usage
       exit 1
       ;;
@@ -151,7 +151,7 @@ CERT_FILES=("$CERTDIR"/*.pem)
 shopt -u nullglob
 
 if [[ ${#CERT_FILES[@]} -eq 0 ]]; then
-  echo "Nenhum certificado foi extraido da conexao." >&2
+  echo "Nenhum certificado foi extraído da conexão." >&2
   exit 1
 fi
 
@@ -171,7 +171,7 @@ for cert in "${CERT_FILES[@]}"; do
     install_path="$INSTALL_STAGING/${base_name}.crt"
     cp "$cert" "$install_path"
   else
-    is_ca="nao"
+    is_ca="não"
   fi
 
   echo "- arquivo: $(basename "$cert")"
@@ -184,7 +184,7 @@ done
 echo
 if [[ "$CA_COUNT" -eq 0 ]]; then
   echo "Nenhum certificado de CA foi encontrado na cadeia apresentada." >&2
-  echo "Isso costuma indicar que a CA raiz/intermediaria do proxy nao foi enviada na conexao." >&2
+  echo "Isso costuma indicar que a CA raiz/intermediária do proxy não foi enviada na conexão." >&2
   echo "Nesse caso, exporte a CA do proxy manualmente e instale no sistema." >&2
   exit 1
 fi
@@ -198,7 +198,7 @@ if [[ "$AUTO_YES" != "true" ]]; then
     y|Y|yes|YES)
       ;;
     *)
-      echo "Instalacao cancelada."
+      echo "Instalação cancelada."
       exit 0
       ;;
   esac
@@ -212,28 +212,28 @@ echo
 echo "Certificados instalados em /usr/local/share/ca-certificates/custom-proxy"
 
 if [[ ! -d "$BUNDLE_DIR" ]]; then
-  echo "bundle nao existente: diretorio nao encontrado em $BUNDLE_DIR" >&2
+  echo "bundle não existente: diretório não encontrado em $BUNDLE_DIR" >&2
   exit 1
 fi
 
 if [[ ! -f "$BUNDLE_PATH" ]]; then
-  echo "bundle nao existente: $BUNDLE_PATH" >&2
+  echo "bundle não existente: $BUNDLE_PATH" >&2
   exit 1
 fi
 
 echo "Bundle do sistema encontrado: $BUNDLE_PATH"
-echo "Arquivos disponiveis em $BUNDLE_DIR:"
+echo "Arquivos disponíveis em $BUNDLE_DIR:"
 ls "$BUNDLE_DIR"
 
 export AWS_CA_BUNDLE="$BUNDLE_PATH"
 echo
 echo "AWS_CA_BUNDLE validado dentro do script:"
 echo "export AWS_CA_BUNDLE=$BUNDLE_PATH"
-echo "Para aplicar na sessao atual do terminal, rode esse export manualmente ou recarregue ~/.bashrc ou ~/.zshrc."
+echo "Para aplicar na sessão atual do terminal, rode esse export manualmente ou recarregue ~/.bashrc ou ~/.zshrc."
 
 echo
 echo "Persistindo AWS_CA_BUNDLE nos arquivos de shell existentes..."
 append_export_if_missing "$HOME/.bashrc" "$BUNDLE_EXPORT"
 append_export_if_missing "$HOME/.zshrc" "$BUNDLE_EXPORT"
 
-echo "Se o problema persistir, a CA raiz do proxy provavelmente nao veio na cadeia e precisara ser exportada manualmente."
+echo "Se o problema persistir, a CA raiz do proxy provavelmente não veio na cadeia e precisará ser exportada manualmente."
