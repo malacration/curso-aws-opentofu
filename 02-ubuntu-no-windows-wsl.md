@@ -4,9 +4,9 @@ title: 2. Ubuntu no Windows (WSL)
 permalink: /ubuntu-no-windows-wsl/
 prev_title: 1. Início
 prev_url: /
-next_title: 3. AWS CLI e Login
-next_url: /aws-cli-login/
-optional_title: 7. Melhor desempenho no WSL
+next_title: 3. Inspeção SSL e AWS_CA_BUNDLE
+next_url: /inspecao-ssl-ca-bundle/
+optional_title: 8. Melhor desempenho no WSL
 optional_url: /wsl-desempenho/
 ---
 

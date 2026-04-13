@@ -1,0 +1,23 @@
+sections:
+  - title: Guia Principal
+    items:
+      - title: 1. Início
+        url: /
+      - title: 2. Ubuntu no Windows (WSL)
+        url: /ubuntu-no-windows-wsl/
+      - title: 3. Inspeção SSL e AWS_CA_BUNDLE
+        url: /inspecao-ssl-ca-bundle/
+      - title: 4. Instalando a AWS CLI e Fazendo Login
+        url: /aws-cli-login/
+      - title: 5. Instalando o OpenTofu
+        url: /opentofu/
+      - title: 6. Diretório do Projeto e VS Code
+        url: /diretorio-e-vscode/
+      - title: 7. Conceitos do OpenTofu
+        url: /conceitos-opentofu/
+      - title: 8. Melhor desempenho no WSL
+        url: /wsl-desempenho/
+  - title: Fases
+    items:
+      - title: 01. OpenTofu e Conceitos
+        url: /fases/01-opentofu-e-conceitos/

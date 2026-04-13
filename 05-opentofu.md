@@ -1,25 +1,25 @@
 ---
 layout: default
-title: 4. OpenTofu
+title: 5. Instalando o OpenTofu
 permalink: /opentofu/
-prev_title: 3. AWS CLI e Login
+prev_title: 4. Instalando a AWS CLI e Fazendo Login
 prev_url: /aws-cli-login/
-next_title: 5. Diretório do Projeto e VS Code
+next_title: 6. Diretório do Projeto e VS Code
 next_url: /diretorio-e-vscode/
 ---
 
-# 4. OpenTofu
+# 5. Instalando o OpenTofu
 
 Este guia usa o repositório oficial do OpenTofu para distribuições baseadas em `.deb`, como Ubuntu e Debian.
 
-## 4.1 Instalar os pacotes necessários
+## 5.1 Instalar os pacotes necessários
 
 ```bash
 sudo apt update
 sudo apt install -y apt-transport-https ca-certificates curl gnupg
 ```
 
-## 4.2 Adicionar as chaves e o `keyring`
+## 5.2 Adicionar as chaves e o `keyring`
 
 ```bash
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -28,7 +28,7 @@ curl -fsSL https://packages.opentofu.org/opentofu/tofu/gpgkey | sudo gpg --no-tt
 sudo chmod a+r /etc/apt/keyrings/opentofu.gpg /etc/apt/keyrings/opentofu-repo.gpg
 ```
 
-## 4.3 Adicionar o repositório oficial
+## 5.3 Adicionar o repositório oficial
 
 ```bash
 echo \
@@ -38,19 +38,19 @@ deb-src [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-rep
 sudo chmod a+r /etc/apt/sources.list.d/opentofu.list
 ```
 
-## 4.4 Instalar o OpenTofu
+## 5.4 Instalar o OpenTofu
 
 ```bash
 sudo apt update
 sudo apt install -y tofu
 ```
 
-## 4.5 Validar a instalação
+## 5.5 Validar a instalação
 
 ```bash
 tofu --version
 ```
 
-## 4.6 Referência oficial
+## 5.6 Referência oficial
 
 - OpenTofu Debian/Ubuntu: https://opentofu.org/docs/intro/install/deb/

@@ -2,8 +2,8 @@
 layout: default
 title: 1. Início
 permalink: /
-next_title: 3. AWS CLI e Login
-next_url: /aws-cli-login/
+next_title: 3. Inspeção SSL e AWS_CA_BUNDLE
+next_url: /inspecao-ssl-ca-bundle/
 optional_title: 2. Ubuntu no Windows (WSL)
 optional_url: /ubuntu-no-windows-wsl/
 ---
@@ -20,13 +20,13 @@ Todo o material foi pensado para distribuições baseadas em Debian, preferencia
 - Recomendação principal: Ubuntu
 - Windows também pode ser usado, desde que execute o ambiente Linux via WSL
 
-## 1.2 Se você usa Windows
+## 1.2 🪟 No Windows
 
 Se estiver no Windows, use preferencialmente `Ubuntu` dentro do `WSL 2`.
 
 O guia para esse caso está em [Ubuntu no Windows (WSL)]({{ '/ubuntu-no-windows-wsl/' | relative_url }}).
 
-## 1.3 Se você usa Linux
+## 1.3 🐧 No Linux
 
 Se já estiver em Linux, ignore a etapa de instalação do `WSL`.
 
@@ -46,12 +46,13 @@ Neste caso, a recomendação continua sendo usar:
 
 O fluxo principal do curso está separado por ferramenta:
 
-1. [3. AWS CLI e Login]({{ '/aws-cli-login/' | relative_url }})
-2. [4. OpenTofu]({{ '/opentofu/' | relative_url }})
-3. [5. Diretório do Projeto e VS Code]({{ '/diretorio-e-vscode/' | relative_url }})
+1. [3. Inspeção SSL e AWS_CA_BUNDLE]({{ '/inspecao-ssl-ca-bundle/' | relative_url }})
+2. [4. Instalando a AWS CLI e Fazendo Login]({{ '/aws-cli-login/' | relative_url }})
+3. [5. Instalando o OpenTofu]({{ '/opentofu/' | relative_url }})
+4. [6. Diretório do Projeto e VS Code]({{ '/diretorio-e-vscode/' | relative_url }})
 
 ## 1.6 Guias complementares
 
-- [6. Visão Geral da Instalação]({{ '/visao-geral/' | relative_url }})
-- [7. Melhor desempenho no WSL]({{ '/wsl-desempenho/' | relative_url }})
+- [7. Conceitos do OpenTofu]({{ '/conceitos-opentofu/' | relative_url }})
+- [8. Melhor desempenho no WSL]({{ '/wsl-desempenho/' | relative_url }})
 - [Script de apoio para CA corporativa]({{ '/scripts/install-proxy-ca.sh' | relative_url }})

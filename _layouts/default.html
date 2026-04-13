@@ -52,7 +52,7 @@
       }
 
       .shell {
-        max-width: 920px;
+        max-width: 1240px;
         margin: 0 auto;
         padding: 24px 20px 64px;
       }
@@ -63,6 +63,12 @@
         justify-content: space-between;
         gap: 16px;
         margin-bottom: 28px;
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
 
       .brand {
@@ -92,12 +98,126 @@
         box-shadow: var(--shadow);
       }
 
+      .menu-toggle {
+        border: 1px solid var(--border);
+        background: var(--bg-panel);
+        color: var(--text);
+        border-radius: 14px;
+        width: 46px;
+        height: 46px;
+        padding: 0;
+        cursor: pointer;
+        box-shadow: var(--shadow);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .menu-toggle:hover {
+        background: var(--bg-panel-soft);
+      }
+
+      .menu-toggle-bars {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .menu-toggle-bars span {
+        display: block;
+        width: 18px;
+        height: 2px;
+        border-radius: 999px;
+        background: currentColor;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 290px minmax(0, 1fr);
+        gap: 24px;
+        align-items: start;
+      }
+
+      .main-area {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 260px;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .sidebar-panel {
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent), var(--bg-panel);
+        border-radius: 22px;
+        padding: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .sidebar-panel h2 {
+        margin: 0 0 12px;
+        font-size: 1.05rem;
+      }
+
+      .sidebar-section + .sidebar-section {
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid var(--border);
+      }
+
+      .sidebar-section h3 {
+        margin: 0 0 10px;
+        font-size: 0.95rem;
+        color: var(--text-soft);
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .sidebar-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar-links li + li {
+        margin-top: 6px;
+      }
+
+      .sidebar-links a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        padding: 8px 10px;
+        border-radius: 10px;
+      }
+
+      .sidebar-links a:hover {
+        background: var(--bg-panel-soft);
+      }
+
+      .sidebar-links a.is-current {
+        background: rgba(34, 197, 94, 0.14);
+        border: 1px solid rgba(34, 197, 94, 0.2);
+      }
+
       .content {
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent), var(--bg-panel);
         border: 1px solid var(--border);
         border-radius: 22px;
         padding: 32px;
         box-shadow: var(--shadow);
+      }
+
+      .page-index-panel {
+        position: sticky;
+        top: 24px;
       }
 
       h1, h2, h3 {
@@ -186,6 +306,24 @@
         border-top: 1px solid var(--border);
       }
 
+      .page-index h2 {
+        margin: 0 0 10px;
+        font-size: 1.05rem;
+      }
+
+      .page-index ul {
+        margin: 0;
+        padding-left: 1.2rem;
+      }
+
+      .page-index li {
+        margin: 0.3rem 0;
+      }
+
+      .page-index a {
+        text-decoration: none;
+      }
+
       .page-nav h2 {
         margin-top: 0;
         font-size: 1.1rem;
@@ -224,6 +362,14 @@
         text-align: center;
       }
 
+      .sidebar-hidden .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .sidebar-hidden .sidebar {
+        display: none;
+      }
+
       @media (max-width: 720px) {
         .shell {
           padding: 16px 14px 48px;
@@ -238,6 +384,26 @@
           align-items: flex-start;
           flex-direction: column;
         }
+
+        .topbar-actions {
+          width: 100%;
+        }
+
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .main-area {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: static;
+        }
+
+        .page-index-panel {
+          position: static;
+        }
       }
     </style>
   </head>
@@ -248,38 +414,81 @@
           <strong>{{ site.title }}</strong>
           <span>{{ site.description }}</span>
         </a>
-        <button class="theme-toggle" type="button" id="theme-toggle">Alternar tema</button>
+        <div class="topbar-actions">
+          <button class="menu-toggle" type="button" id="menu-toggle" aria-label="Ocultar menu" title="Ocultar menu">
+            <span class="menu-toggle-bars" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+          <button class="theme-toggle" type="button" id="theme-toggle">Alternar tema</button>
+        </div>
       </div>
 
-      <main class="content">
-        {{ content }}
+      <div class="layout">
+        <aside class="sidebar" id="sidebar">
+          <nav class="sidebar-panel">
+            <h2>Menu</h2>
+            {% for section in site.data.navigation.sections %}
+            <section class="sidebar-section">
+              <h3>{{ section.title }}</h3>
+              <ul class="sidebar-links">
+                {% for item in section.items %}
+                {% assign item_url = item.url | relative_url %}
+                {% assign is_current = false %}
+                {% if page.url == item.url %}
+                  {% assign is_current = true %}
+                {% endif %}
+                <li>
+                  <a href="{{ item_url }}"{% if is_current %} class="is-current"{% endif %}>{{ item.title }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </section>
+            {% endfor %}
+          </nav>
+        </aside>
 
-        {% if page.prev_url or page.next_url or page.optional_url %}
-        <section class="page-nav">
-          <h2>Continuar</h2>
-          <div class="nav-grid">
-            {% if page.prev_url %}
-            <a class="nav-card" href="{{ page.prev_url | relative_url }}">
-              <small>Anterior</small>
-              <strong>{{ page.prev_title }}</strong>
-            </a>
+        <div class="main-area">
+          <main class="content">
+            {{ content }}
+
+            {% if page.prev_url or page.next_url or page.optional_url %}
+            <section class="page-nav">
+              <h2>Continuar</h2>
+              <div class="nav-grid">
+                {% if page.prev_url %}
+                <a class="nav-card" href="{{ page.prev_url | relative_url }}">
+                  <small>Anterior</small>
+                  <strong>{{ page.prev_title }}</strong>
+                </a>
+                {% endif %}
+                {% if page.next_url %}
+                <a class="nav-card" href="{{ page.next_url | relative_url }}">
+                  <small>Próximo</small>
+                  <strong>{{ page.next_title }}</strong>
+                </a>
+                {% endif %}
+                {% if page.optional_url %}
+                <a class="nav-card" href="{{ page.optional_url | relative_url }}">
+                  <small>Opcional</small>
+                  <strong>{{ page.optional_title }}</strong>
+                </a>
+                {% endif %}
+              </div>
+            </section>
             {% endif %}
-            {% if page.next_url %}
-            <a class="nav-card" href="{{ page.next_url | relative_url }}">
-              <small>Próximo</small>
-              <strong>{{ page.next_title }}</strong>
-            </a>
-            {% endif %}
-            {% if page.optional_url %}
-            <a class="nav-card" href="{{ page.optional_url | relative_url }}">
-              <small>Opcional</small>
-              <strong>{{ page.optional_title }}</strong>
-            </a>
-            {% endif %}
-          </div>
-        </section>
-        {% endif %}
-      </main>
+          </main>
+
+          <aside class="page-index-panel" id="page-index" hidden>
+            <nav class="sidebar-panel page-index">
+              <h2>Índice da página</h2>
+              <ul id="page-index-list"></ul>
+            </nav>
+          </aside>
+        </div>
+      </div>
 
       <footer class="site-footer">
         Curso preparado para distribuicoes Debian-based, preferencialmente Ubuntu.
@@ -305,6 +514,28 @@
           button.addEventListener("click", function () {
             var current = root.getAttribute("data-theme") || "dark";
             applyTheme(current === "dark" ? "light" : "dark");
+          });
+        }
+
+        var menuButton = document.getElementById("menu-toggle");
+        var sidebarHidden = localStorage.getItem("sidebarHidden") === "true";
+
+        function applySidebarState(hidden) {
+          document.body.classList.toggle("sidebar-hidden", hidden);
+          if (menuButton) {
+            var label = hidden ? "Mostrar menu" : "Ocultar menu";
+            menuButton.setAttribute("aria-label", label);
+            menuButton.setAttribute("title", label);
+          }
+          localStorage.setItem("sidebarHidden", hidden ? "true" : "false");
+        }
+
+        applySidebarState(sidebarHidden);
+
+        if (menuButton) {
+          menuButton.addEventListener("click", function () {
+            var isHidden = document.body.classList.contains("sidebar-hidden");
+            applySidebarState(!isHidden);
           });
         }
 
@@ -335,6 +566,48 @@
             });
           });
         });
+
+        var content = document.querySelector(".content");
+        var indexBox = document.getElementById("page-index");
+        var indexList = document.getElementById("page-index-list");
+
+        if (content && indexBox && indexList) {
+          var headings = content.querySelectorAll("h2, h3");
+          var items = [];
+
+          headings.forEach(function (heading) {
+            if (heading.closest(".page-index") || heading.closest(".page-nav")) {
+              return;
+            }
+
+            if (!heading.id) {
+              heading.id = heading.textContent
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-+|-+$/g, "");
+            }
+
+            var li = document.createElement("li");
+            if (heading.tagName === "H3") {
+              li.style.marginLeft = "1rem";
+            }
+
+            var a = document.createElement("a");
+            a.href = "#" + heading.id;
+            a.textContent = heading.textContent;
+            li.appendChild(a);
+            items.push(li);
+          });
+
+          if (items.length > 0) {
+            items.forEach(function (item) {
+              indexList.appendChild(item);
+            });
+            indexBox.hidden = false;
+          }
+        }
       })();
     </script>
   </body>
