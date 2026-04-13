@@ -2,12 +2,12 @@
 layout: default
 title: AWS CLI e Login
 permalink: /aws-cli-login/
-prev_title: Requisitos
-prev_url: /requisitos/
+prev_title: Inicio
+prev_url: /
 next_title: OpenTofu
 next_url: /opentofu/
-optional_title: Windows e WSL
-optional_url: /windows-wsl/
+optional_title: Ubuntu no Windows (WSL)
+optional_url: /ubuntu-no-windows-wsl/
 ---
 
 # AWS CLI e Login
@@ -16,7 +16,7 @@ Este guia cobre:
 
 - instalacao da `AWS CLI`;
 - login no ambiente de treinamento;
-- uso do perfil `treinamento`;
+- uso do perfil treinamento;
 - configuracao de `AWS_CA_BUNDLE` em ambientes com inspecao SSL.
 
 ## Instalacao da AWS CLI
@@ -85,15 +85,13 @@ aws configure set region sa-east-1
 
 ## Login no ambiente de treinamento
 
-Neste curso, o ambiente de treinamento usa o perfil:
+Neste curso, o ambiente de treinamento usa o perfil treinamento.
 
-```bash
-treinamento
-```
+No `WSL`, o login deve ser feito com o metodo remoto porque o navegador do Windows nao consegue se comunicar com a CLI da mesma forma que em um Linux nativo. Por isso, no `WSL`, o uso de `aws login --remote` e obrigatorio.
 
-### Linux nativo
+### Comando para Linux nativo
 
-Se estiver em Ubuntu nativo, execute:
+Use este comando se estiver em Linux nativo:
 
 ```bash
 aws login --profile treinamento
@@ -105,9 +103,9 @@ Quando a AWS CLI pedir a regiao, informe:
 sa-east-1
 ```
 
-### WSL
+### Comando para Windows com WSL
 
-Se estiver no `WSL`, use obrigatoriamente:
+Use este comando se estiver no Windows com `WSL`:
 
 ```bash
 aws login --remote --profile treinamento
@@ -137,7 +135,7 @@ aws configure list --profile treinamento
 
 O tipo esperado para esse fluxo e `login`.
 
-## Usar o perfil `treinamento` como padrao na sessao atual
+## Usar o perfil treinamento como padrao na sessao atual
 
 Se quiser evitar `--profile treinamento` em todos os comandos:
 

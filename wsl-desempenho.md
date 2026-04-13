@@ -2,8 +2,8 @@
 layout: default
 title: Melhor desempenho no WSL
 permalink: /wsl-desempenho/
-prev_title: Windows e WSL
-prev_url: /windows-wsl/
+prev_title: Ubuntu no Windows (WSL)
+prev_url: /ubuntu-no-windows-wsl/
 next_title: AWS CLI e Login
 next_url: /aws-cli-login/
 ---

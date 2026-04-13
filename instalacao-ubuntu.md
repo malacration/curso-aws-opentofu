@@ -2,12 +2,12 @@
 layout: default
 title: Visao Geral da Instalacao
 permalink: /visao-geral/
-prev_title: Requisitos
-prev_url: /requisitos/
+prev_title: Inicio
+prev_url: /
 next_title: AWS CLI e Login
 next_url: /aws-cli-login/
-optional_title: Windows e WSL
-optional_url: /windows-wsl/
+optional_title: Ubuntu no Windows (WSL)
+optional_url: /ubuntu-no-windows-wsl/
 ---
 
 # Visao Geral da Instalacao
@@ -88,8 +88,6 @@ sudo apt install -y code
 ```bash
 code --version
 ```
-
-Depois da instalacao, siga o passo de criacao da pasta do curso e abertura no editor em [Diretorio do Projeto e VS Code]({{ '/diretorio-e-vscode/' | relative_url }}).
 
 ## Configuracao inicial recomendada
 

@@ -141,6 +141,27 @@
         background: transparent;
       }
 
+      .code-shell {
+        position: relative;
+      }
+
+      .copy-button {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        border: 1px solid var(--border);
+        background: var(--bg-panel);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 7px 12px;
+        cursor: pointer;
+        font-size: 0.85rem;
+      }
+
+      .copy-button:hover {
+        background: var(--bg-panel-soft);
+      }
+
       blockquote {
         margin: 1.5rem 0;
         padding: 0.8rem 1rem;
@@ -286,6 +307,34 @@
             applyTheme(current === "dark" ? "light" : "dark");
           });
         }
+
+        var blocks = document.querySelectorAll("pre");
+        blocks.forEach(function (pre) {
+          if (pre.parentElement && pre.parentElement.classList.contains("code-shell")) {
+            return;
+          }
+
+          var wrapper = document.createElement("div");
+          wrapper.className = "code-shell";
+          pre.parentNode.insertBefore(wrapper, pre);
+          wrapper.appendChild(pre);
+
+          var copy = document.createElement("button");
+          copy.type = "button";
+          copy.className = "copy-button";
+          copy.textContent = "Copiar";
+          wrapper.appendChild(copy);
+
+          copy.addEventListener("click", function () {
+            var text = pre.innerText;
+            navigator.clipboard.writeText(text).then(function () {
+              copy.textContent = "Copiado";
+              setTimeout(function () {
+                copy.textContent = "Copiar";
+              }, 1400);
+            });
+          });
+        });
       })();
     </script>
   </body>
