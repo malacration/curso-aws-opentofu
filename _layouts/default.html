@@ -260,19 +260,19 @@
           <div class="nav-grid">
             {% if page.prev_url %}
             <a class="nav-card" href="{{ page.prev_url | relative_url }}">
-              <small>Passo anterior</small>
+              <small>Anterior</small>
               <strong>{{ page.prev_title }}</strong>
             </a>
             {% endif %}
             {% if page.next_url %}
             <a class="nav-card" href="{{ page.next_url | relative_url }}">
-              <small>Proximo passo</small>
+              <small>Proximo</small>
               <strong>{{ page.next_title }}</strong>
             </a>
             {% endif %}
             {% if page.optional_url %}
             <a class="nav-card" href="{{ page.optional_url | relative_url }}">
-              <small>Passo opcional</small>
+              <small>Opcional</small>
               <strong>{{ page.optional_title }}</strong>
             </a>
             {% endif %}

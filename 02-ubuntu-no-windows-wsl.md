@@ -1,27 +1,27 @@
 ---
 layout: default
-title: Ubuntu no Windows (WSL)
+title: 2. Ubuntu no Windows (WSL)
 permalink: /ubuntu-no-windows-wsl/
-prev_title: Inicio
+prev_title: 1. Inicio
 prev_url: /
-next_title: AWS CLI e Login
+next_title: 3. AWS CLI e Login
 next_url: /aws-cli-login/
-optional_title: Melhor desempenho no WSL
+optional_title: 7. Melhor desempenho no WSL
 optional_url: /wsl-desempenho/
 ---
 
-# Ubuntu no Windows (WSL)
+# 2. Ubuntu no Windows (WSL)
 
 Este guia cobre a preparacao do `Ubuntu` dentro do `WSL 2` para quem estuda no Windows.
 
-## Distribuicao recomendada
+## 2.1 Distribuicao recomendada
 
 Use preferencialmente:
 
 - `Ubuntu`
 - ou outra distribuicao baseada em Debian, se necessario
 
-## Instalar o WSL 2
+## 2.2 Instalar o WSL 2
 
 Abra o `PowerShell` como administrador e execute:
 
@@ -40,7 +40,7 @@ Depois:
 wsl --status
 ```
 
-## Recomendacao para este curso
+## 2.3 Recomendacao para este curso
 
 Depois de instalar o Ubuntu no `WSL 2`:
 

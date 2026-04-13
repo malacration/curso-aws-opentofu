@@ -1,20 +1,20 @@
 ---
 layout: default
-title: Diretorio do Projeto e VS Code
+title: 5. Diretorio do Projeto e VS Code
 permalink: /diretorio-e-vscode/
-prev_title: OpenTofu
+prev_title: 4. OpenTofu
 prev_url: /opentofu/
-next_title: Visao Geral da Instalacao
+next_title: 6. Visao Geral da Instalacao
 next_url: /visao-geral/
-optional_title: Melhor desempenho no WSL
+optional_title: 7. Melhor desempenho no WSL
 optional_url: /wsl-desempenho/
 ---
 
-# Diretorio do Projeto e VS Code
+# 5. Diretorio do Projeto e VS Code
 
 Este passo organiza o ambiente do curso e garante que voce abra a pasta correta no `VS Code`.
 
-## Se voce acabou de clonar o projeto
+## 5.1 Se voce acabou de clonar o projeto
 
 No terminal, execute:
 
@@ -34,7 +34,7 @@ O caminho esperado sera parecido com:
 /home/seu-usuario/cursos/aws-tofu
 ```
 
-## Se voce ainda nao criou a pasta base
+## 5.2 Se voce ainda nao criou a pasta base
 
 Antes de clonar ou copiar os arquivos do curso, voce pode preparar a estrutura assim:
 
@@ -43,7 +43,7 @@ mkdir -p ~/cursos
 cd ~/cursos
 ```
 
-## Abrir esse diretorio no VS Code
+## 5.3 Abrir esse diretorio no VS Code
 
 Ainda dentro da pasta do curso, execute:
 
@@ -53,7 +53,7 @@ code .
 
 Isso abre o `VS Code` exatamente no diretorio atual.
 
-## Se estiver usando WSL
+## 5.4 Se estiver usando WSL
 
 No `WSL`, siga estas orientacoes extras:
 
@@ -70,7 +70,7 @@ cd ~/cursos/aws-tofu
 code .
 ```
 
-## Se o comando `code` nao funcionar
+## 5.5 Se o comando `code` nao funcionar
 
 Verifique se o `VS Code` foi instalado corretamente.
 
