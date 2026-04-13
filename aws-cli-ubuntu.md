@@ -1,10 +1,16 @@
 ---
 layout: default
-title: AWS CLI no Ubuntu
-permalink: /aws-cli-ubuntu/
+title: AWS CLI e Login
+permalink: /aws-cli-login/
+prev_title: Requisitos
+prev_url: /requisitos/
+next_title: OpenTofu
+next_url: /opentofu/
+optional_title: Windows e WSL
+optional_url: /windows-wsl/
 ---
 
-# AWS CLI no Ubuntu
+# AWS CLI e Login
 
 Este guia cobre:
 
@@ -85,7 +91,7 @@ Neste curso, o ambiente de treinamento usa o perfil:
 treinamento
 ```
 
-### Ubuntu nativo
+### Linux nativo
 
 Se estiver em Ubuntu nativo, execute:
 

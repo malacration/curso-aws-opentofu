@@ -2,6 +2,12 @@
 layout: default
 title: Requisitos
 permalink: /requisitos/
+prev_title: Inicio
+prev_url: /
+next_title: AWS CLI e Login
+next_url: /aws-cli-login/
+optional_title: Windows e WSL
+optional_url: /windows-wsl/
 ---
 
 # Requisitos
@@ -16,28 +22,7 @@ Para acompanhar este curso, prepare o ambiente abaixo antes de iniciar as aulas.
 
 ## Se voce usa Windows
 
-Se estiver no Windows, instale o **WSL 2** e utilize de preferencia o **Ubuntu** como distribuicao Linux.
-
-### Instalacao recomendada
-
-1. Abra o **PowerShell** como administrador.
-2. Execute:
-
-```bash
-wsl --install -d Ubuntu
-```
-
-3. Reinicie o computador, se o Windows solicitar.
-4. Abra o Ubuntu instalado e conclua a criacao do seu usuario Linux.
-5. Confirme se o WSL esta funcionando com:
-
-```bash
-wsl --status
-```
-
-Se a distribuicao Ubuntu nao estiver disponivel no seu ambiente, outra distribuicao baseada em Debian tambem atende ao curso.
-
-Para melhorar o desempenho no Windows com `WSL 2`, siga tambem o guia em [WSL com Melhor Desempenho]({{ '/wsl-desempenho/' | relative_url }}).
+Se estiver no Windows, o passo recomendado antes de continuar e [Windows e WSL]({{ '/windows-wsl/' | relative_url }}).
 
 ## Se voce usa Linux
 
@@ -64,8 +49,8 @@ Para reduzir diferencas de ambiente durante o curso, use preferencialmente:
 
 ## Proximo passo
 
-Depois de preparar o sistema operacional, siga o guia de instalacao em [Guia de Instalacao no Ubuntu]({{ '/instalacao-ubuntu/' | relative_url }}).
+Depois de preparar o sistema operacional, siga para [AWS CLI e Login]({{ '/aws-cli-login/' | relative_url }}).
 
-As instrucoes da `AWS CLI` e do login no ambiente de treinamento estao em [AWS CLI no Ubuntu]({{ '/aws-cli-ubuntu/' | relative_url }}).
+As instrucoes da `AWS CLI` e do login no ambiente de treinamento estao em [AWS CLI e Login]({{ '/aws-cli-login/' | relative_url }}).
 
-As instrucoes de instalacao do `OpenTofu` estao em [Instalar o OpenTofu no Ubuntu]({{ '/opentofu-ubuntu/' | relative_url }}).
+As instrucoes de instalacao do `OpenTofu` estao em [OpenTofu]({{ '/opentofu/' | relative_url }}).

@@ -1,19 +1,28 @@
 ---
 layout: default
-title: Guia de Instalacao no Ubuntu
-permalink: /instalacao-ubuntu/
+title: Visao Geral da Instalacao
+permalink: /visao-geral/
+prev_title: Requisitos
+prev_url: /requisitos/
+next_title: AWS CLI e Login
+next_url: /aws-cli-login/
+optional_title: Windows e WSL
+optional_url: /windows-wsl/
 ---
 
-# Guia de Instalacao no Ubuntu
+# Visao Geral da Instalacao
 
-Este guia presume que o aluno ja esta em um ambiente Ubuntu, seja nativo ou dentro do WSL.
+Este guia resume o caminho de preparacao do ambiente para o curso.
 
-Se estiver usando Ubuntu dentro do WSL:
+Todo o material presume uma distribuicao baseada em Debian, preferencialmente `Ubuntu`, seja em Linux nativo ou dentro do `WSL`.
 
-- instale `AWS CLI` e `OpenTofu` dentro do Ubuntu;
-- para o `VS Code`, a opcao mais recomendada e instalar o editor no Windows e usar a extensao `WSL`;
-- para login na AWS CLI, use obrigatoriamente `aws login --remote`;
-- se estiver em Ubuntu nativo, siga normalmente a instalacao do VS Code neste guia.
+## Fluxo principal
+
+O curso segue esta continuidade:
+
+1. [AWS CLI e Login]({{ '/aws-cli-login/' | relative_url }})
+2. [OpenTofu]({{ '/opentofu/' | relative_url }})
+3. [Diretorio do Projeto e VS Code]({{ '/diretorio-e-vscode/' | relative_url }})
 
 ## Preparacao inicial
 
@@ -40,13 +49,13 @@ Valores mais comuns:
 
 As instrucoes de instalacao da `AWS CLI`, login no perfil `treinamento`, uso de `sa-east-1` e configuracao de `AWS_CA_BUNDLE` foram separadas em:
 
-[AWS CLI no Ubuntu]({{ '/aws-cli-ubuntu/' | relative_url }})
+[AWS CLI e Login]({{ '/aws-cli-login/' | relative_url }})
 
 ## 2. Instalacao do OpenTofu
 
 As instrucoes detalhadas de instalacao do `OpenTofu` estao em:
 
-[Instalar o OpenTofu no Ubuntu]({{ '/opentofu-ubuntu/' | relative_url }})
+[OpenTofu]({{ '/opentofu/' | relative_url }})
 
 ## 3. Instalacao do Visual Studio Code
 
@@ -80,7 +89,7 @@ sudo apt install -y code
 code --version
 ```
 
-Depois da instalacao, siga o passo de criacao da pasta do curso e abertura no editor em [Criar Diretorio e Abrir no VS Code]({{ '/diretorio-e-vscode/' | relative_url }}).
+Depois da instalacao, siga o passo de criacao da pasta do curso e abertura no editor em [Diretorio do Projeto e VS Code]({{ '/diretorio-e-vscode/' | relative_url }}).
 
 ## Configuracao inicial recomendada
 

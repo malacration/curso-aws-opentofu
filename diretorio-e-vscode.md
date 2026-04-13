@@ -1,10 +1,16 @@
 ---
 layout: default
-title: Criar Diretorio e Abrir no VS Code
+title: Diretorio do Projeto e VS Code
 permalink: /diretorio-e-vscode/
+prev_title: OpenTofu
+prev_url: /opentofu/
+next_title: Visao Geral da Instalacao
+next_url: /visao-geral/
+optional_title: Melhor desempenho no WSL
+optional_url: /wsl-desempenho/
 ---
 
-# Criar Diretorio e Abrir no VS Code
+# Diretorio do Projeto e VS Code
 
 Este passo organiza o ambiente do curso e garante que voce abra a pasta correta no `VS Code`.
 

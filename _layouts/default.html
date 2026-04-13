@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | escape }}">
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #0f172a;
+        --bg-panel: #111827;
+        --bg-panel-soft: #172033;
+        --text: #e5eefc;
+        --text-soft: #aebdd7;
+        --link: #7dd3fc;
+        --border: rgba(148, 163, 184, 0.22);
+        --code-bg: #0b1220;
+        --accent: #22c55e;
+        --shadow: 0 24px 60px rgba(2, 6, 23, 0.35);
+      }
+
+      [data-theme="light"] {
+        color-scheme: light;
+        --bg: #f4f7fb;
+        --bg-panel: #ffffff;
+        --bg-panel-soft: #eef4fb;
+        --text: #172033;
+        --text-soft: #52617d;
+        --link: #0f6db6;
+        --border: rgba(15, 23, 42, 0.12);
+        --code-bg: #edf2f8;
+        --accent: #0f8a52;
+        --shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: radial-gradient(circle at top, rgba(34, 197, 94, 0.12), transparent 24%), var(--bg);
+        color: var(--text);
+        font-family: "Segoe UI", "Noto Sans", Ubuntu, sans-serif;
+        line-height: 1.7;
+      }
+
+      body {
+        min-height: 100vh;
+      }
+
+      a {
+        color: var(--link);
+      }
+
+      .shell {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 24px 20px 64px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+
+      .brand {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 1rem;
+        letter-spacing: 0.02em;
+      }
+
+      .brand span {
+        display: block;
+        color: var(--text-soft);
+        font-size: 0.95rem;
+      }
+
+      .theme-toggle {
+        border: 1px solid var(--border);
+        background: var(--bg-panel);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 10px 14px;
+        cursor: pointer;
+        box-shadow: var(--shadow);
+      }
+
+      .content {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent), var(--bg-panel);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 32px;
+        box-shadow: var(--shadow);
+      }
+
+      h1, h2, h3 {
+        line-height: 1.25;
+      }
+
+      h1 {
+        margin-top: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      h2 {
+        margin-top: 2rem;
+        font-size: 1.45rem;
+      }
+
+      p, li {
+        color: var(--text);
+      }
+
+      ul, ol {
+        padding-left: 1.4rem;
+      }
+
+      code {
+        background: var(--code-bg);
+        border-radius: 8px;
+        padding: 0.15em 0.4em;
+      }
+
+      pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 16px;
+        overflow-x: auto;
+      }
+
+      pre code {
+        padding: 0;
+        background: transparent;
+      }
+
+      blockquote {
+        margin: 1.5rem 0;
+        padding: 0.8rem 1rem;
+        border-left: 4px solid var(--accent);
+        background: var(--bg-panel-soft);
+        border-radius: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th, td {
+        border: 1px solid var(--border);
+        padding: 10px 12px;
+      }
+
+      .page-nav {
+        margin-top: 40px;
+        padding-top: 28px;
+        border-top: 1px solid var(--border);
+      }
+
+      .page-nav h2 {
+        margin-top: 0;
+        font-size: 1.1rem;
+      }
+
+      .nav-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+      }
+
+      .nav-card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        border: 1px solid var(--border);
+        background: var(--bg-panel-soft);
+        border-radius: 16px;
+        padding: 16px;
+      }
+
+      .nav-card small {
+        display: block;
+        color: var(--text-soft);
+        margin-bottom: 6px;
+      }
+
+      .nav-card strong {
+        display: block;
+      }
+
+      .site-footer {
+        margin-top: 24px;
+        color: var(--text-soft);
+        font-size: 0.95rem;
+        text-align: center;
+      }
+
+      @media (max-width: 720px) {
+        .shell {
+          padding: 16px 14px 48px;
+        }
+
+        .content {
+          padding: 22px 18px;
+          border-radius: 18px;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="topbar">
+        <a class="brand" href="{{ '/' | relative_url }}">
+          <strong>{{ site.title }}</strong>
+          <span>{{ site.description }}</span>
+        </a>
+        <button class="theme-toggle" type="button" id="theme-toggle">Alternar tema</button>
+      </div>
+
+      <main class="content">
+        {{ content }}
+
+        {% if page.prev_url or page.next_url or page.optional_url %}
+        <section class="page-nav">
+          <h2>Continuar</h2>
+          <div class="nav-grid">
+            {% if page.prev_url %}
+            <a class="nav-card" href="{{ page.prev_url | relative_url }}">
+              <small>Passo anterior</small>
+              <strong>{{ page.prev_title }}</strong>
+            </a>
+            {% endif %}
+            {% if page.next_url %}
+            <a class="nav-card" href="{{ page.next_url | relative_url }}">
+              <small>Proximo passo</small>
+              <strong>{{ page.next_title }}</strong>
+            </a>
+            {% endif %}
+            {% if page.optional_url %}
+            <a class="nav-card" href="{{ page.optional_url | relative_url }}">
+              <small>Passo opcional</small>
+              <strong>{{ page.optional_title }}</strong>
+            </a>
+            {% endif %}
+          </div>
+        </section>
+        {% endif %}
+      </main>
+
+      <footer class="site-footer">
+        Curso preparado para distribuicoes Debian-based, preferencialmente Ubuntu.
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var stored = localStorage.getItem("theme");
+        var prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+        var theme = stored || (prefersLight ? "light" : "dark");
+
+        function applyTheme(nextTheme) {
+          root.setAttribute("data-theme", nextTheme);
+          localStorage.setItem("theme", nextTheme);
+        }
+
+        applyTheme(theme);
+
+        var button = document.getElementById("theme-toggle");
+        if (button) {
+          button.addEventListener("click", function () {
+            var current = root.getAttribute("data-theme") || "dark";
+            applyTheme(current === "dark" ? "light" : "dark");
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

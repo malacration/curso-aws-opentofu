@@ -1,10 +1,14 @@
 ---
 layout: default
-title: WSL com Melhor Desempenho
+title: Melhor desempenho no WSL
 permalink: /wsl-desempenho/
+prev_title: Windows e WSL
+prev_url: /windows-wsl/
+next_title: AWS CLI e Login
+next_url: /aws-cli-login/
 ---
 
-# WSL com Melhor Desempenho
+# Melhor desempenho no WSL
 
 Se voce estiver no Windows usando `WSL 2`, o principal ganho de desempenho vem de manter os arquivos do curso dentro do filesystem Linux do Ubuntu, e nao dentro do disco do Windows montado em `/mnt/c`.
 

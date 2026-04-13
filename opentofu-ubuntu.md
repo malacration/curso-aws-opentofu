@@ -1,10 +1,14 @@
 ---
 layout: default
-title: Instalar o OpenTofu no Ubuntu
-permalink: /opentofu-ubuntu/
+title: OpenTofu
+permalink: /opentofu/
+prev_title: AWS CLI e Login
+prev_url: /aws-cli-login/
+next_title: Diretorio do Projeto e VS Code
+next_url: /diretorio-e-vscode/
 ---
 
-# Instalar o OpenTofu no Ubuntu
+# OpenTofu
 
 Este guia usa o repositorio oficial do OpenTofu para distribuicoes baseadas em `.deb`, como Ubuntu e Debian.
 
