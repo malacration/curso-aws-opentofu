@@ -122,14 +122,6 @@
         transition: font-size 180ms ease;
       }
 
-      .brand-author {
-        display: block;
-        margin-top: 0.2rem;
-        color: var(--text-soft);
-        font-size: 0.82rem;
-        transition: font-size 180ms ease, opacity 180ms ease;
-      }
-
       .brand span {
         display: block;
         color: var(--text-soft);
@@ -150,11 +142,6 @@
 
       body.is-scrolled .brand strong {
         font-size: 0.96rem;
-      }
-
-      body.is-scrolled .brand-author {
-        font-size: 0.76rem;
-        opacity: 0.88;
       }
 
       body.is-scrolled .brand span {
@@ -854,8 +841,7 @@
           border-radius: 18px;
         }
 
-        .brand strong,
-        .brand-author {
+        .brand strong {
           display: none;
         }
 
@@ -924,7 +910,6 @@
       <div class="topbar-inner">
         <div class="brand">
           <strong>{{ site.title }}</strong>
-          <small class="brand-author">Por Andrew Ramires</small>
           <span>{{ site.description }}</span>
         </div>
         <div class="topbar-actions">
@@ -935,9 +920,9 @@
               <line x1="3" y1="18" x2="21" y2="18"/>
             </svg>
           </button>
-          <a class="github-link" href="https://github.com/malacration" target="_blank" rel="noopener noreferrer" aria-label="Perfil GitHub" title="Perfil GitHub de Andrew Ramires">
+          <a class="github-link" href="https://github.com/malacration" target="_blank" rel="noopener noreferrer" aria-label="Autor Andrew Ramires" title="GitHub de Andrew Ramires">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12A11.5 11.5 0 0 0 8.36 22.93c.58.11.79-.25.79-.56v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.69.08-.69 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.72-1.54-2.54-.29-5.22-1.27-5.22-5.67 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.18-1.49 3.14-1.18 3.14-1.18.63 1.59.24 2.77.12 3.06.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.37-5.25 5.66.41.35.78 1.05.78 2.12v3.14c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
-            <span>Perfil GitHub</span>
+            <span>Autor: Andrew Ramires</span>
           </a>
           <div class="controls-popover" id="controls-popover">
             <button class="controls-trigger" id="controls-trigger" type="button" aria-label="Preferências de visualização" title="Preferências de visualização">
@@ -1073,16 +1058,16 @@
                   <strong>{{ page.prev_title }}</strong>
                 </a>
                 {% endif %}
-                {% if page.next_url %}
-                <a class="nav-card" href="{{ page.next_url | relative_url }}">
-                  <small>Próximo</small>
-                  <strong>{{ page.next_title }}</strong>
-                </a>
-                {% endif %}
                 {% if page.optional_url %}
                 <a class="nav-card" href="{{ page.optional_url | relative_url }}">
                   <small>Opcional</small>
                   <strong>{{ page.optional_title }}</strong>
+                </a>
+                {% endif %}
+                {% if page.next_url %}
+                <a class="nav-card" href="{{ page.next_url | relative_url }}">
+                  <small>Próximo</small>
+                  <strong>{{ page.next_title }}</strong>
                 </a>
                 {% endif %}
               </div>

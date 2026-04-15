@@ -45,20 +45,18 @@ Use `-k` apenas como bootstrap inicial para obter o script.
 
 Se você executar sem argumentos, ele usa este destino padrão:
 
-```bash
-globo.com:443
-```
+> "globo.com:443"
 
 Exemplo usando o padrão:
 
 ```bash
-./scripts/install-proxy-ca.sh
+./install-proxy-ca.sh
 ```
 
 Exemplo de uso para testar especificamente o login da AWS:
 
 ```bash
-./scripts/install-proxy-ca.sh --target sa-east-1.signin.aws.amazon.com:443 --sni sa-east-1.signin.aws.amazon.com
+./install-proxy-ca.sh --target sa-east-1.signin.aws.amazon.com:443 --sni sa-east-1.signin.aws.amazon.com
 ```
 
 ## 3.5 O que o script faz

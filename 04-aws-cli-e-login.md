@@ -74,14 +74,12 @@ rm -rf aws awscliv2.zip
 
 Neste curso, use a região:
 
-```bash
-sa-east-1
-```
+> "sa-east-1"
 
 Se quiser definir isso logo no início:
 
 ```bash
-aws configure set region sa-east-1
+aws configure set region sa-east-1 --profile treinamento
 ```
 
 ## 4.3 Login no ambiente de treinamento
@@ -100,9 +98,7 @@ aws login --profile treinamento
 
 Quando a AWS CLI pedir a região, informe:
 
-```bash
-sa-east-1
-```
+> "sa-east-1"
 
 ### 4.3.2 Comando para Windows com WSL
 
@@ -114,9 +110,7 @@ aws login --remote --profile treinamento
 
 Quando a AWS CLI pedir a região, informe:
 
-```bash
-sa-east-1
-```
+> "sa-east-1"
 
 No `WSL`, não use `aws login --profile treinamento` sem `--remote`.
 
