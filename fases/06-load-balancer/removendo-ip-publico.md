@@ -14,6 +14,29 @@ Nesta etapa, vamos deixar a EC2 privada sem quebrar o servidor HTTP.
 
 <blockquote><strong>⚡ Visão rápida:</strong> remover o IP público da instância sem mudar a rede faz o <code>user_data</code> falhar, porque a máquina perde a saída para a internet. A correção é separar a arquitetura: o ALB continua nas subnets públicas, a EC2 vai para uma subnet privada, e a saída para internet passa por um <code>NAT Gateway</code>. Para acesso administrativo pela interface da AWS, vamos usar <code>Session Manager</code>.</blockquote>
 
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet">Abrir documentação do recurso <code>aws_subnet</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip">Abrir documentação do recurso <code>aws_eip</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/nat_gateway">Abrir documentação do recurso <code>aws_nat_gateway</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table">Abrir documentação do recurso <code>aws_route_table</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association">Abrir documentação do recurso <code>aws_route_table_association</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group">Abrir documentação do recurso <code>aws_security_group</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role">Abrir documentação do recurso <code>aws_iam_role</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment">Abrir documentação do recurso <code>aws_iam_role_policy_attachment</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile">Abrir documentação do recurso <code>aws_iam_instance_profile</code></a>
+</blockquote>
+
 ## 6.2.1 O problema de simplesmente remover o IP público
 
 No item anterior, a EC2 ainda conseguia instalar o Apache no boot porque tinha acesso direto à internet.

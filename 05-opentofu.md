@@ -53,6 +53,9 @@ sudo apt install -y tofu
 tofu --version
 ```
 
-## 5.6 Referência oficial
-
-- OpenTofu Debian/Ubuntu: https://opentofu.org/docs/intro/install/deb/
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://opentofu.org/docs/intro/install/deb/">Abrir documentação de instalação do OpenTofu para Debian e Ubuntu</a>
+</blockquote>

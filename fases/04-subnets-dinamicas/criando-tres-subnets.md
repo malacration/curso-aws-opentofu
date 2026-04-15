@@ -21,6 +21,15 @@ Imagine, por exemplo, que queremos colocar uma cópia de um servidor em cada zon
 
 Nesse cenário, cada servidor pode ser conectado a uma subnet diferente, e cada subnet fica associada a uma zona específica.
 
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet">Abrir documentação do recurso <code>aws_subnet</code></a>
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/values/outputs">Abrir documentação do bloco <code>output</code></a>
+</blockquote>
+
 ## 4.1.1 Criar o arquivo `subnet.tf`
 
 Agora vamos usar o projeto atual para criar três subnets dentro da VPC que já existe.

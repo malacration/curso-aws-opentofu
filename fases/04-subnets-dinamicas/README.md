@@ -30,13 +30,16 @@ Nesse cenário, cada servidor pode ser conectado a uma subnet diferente, e cada 
 
 Isso melhora a organização da rede e prepara o projeto para um desenho mais resiliente.
 
-## 4.2 Ideia central da fase
-
-Nesta fase, o aluno deve entender três pontos:
-
-- 🌐 a VPC pertence à região;
-- 📍 cada subnet pertence a uma única zona de disponibilidade;
-- 🧱 distribuir subnets entre zonas é a base para distribuir servidores entre essas mesmas zonas.
+<blockquote>
+  <strong>🎯 Ideia central da fase:</strong><br>
+  Nesta fase, o aluno deve entender três pontos:
+  <br><br>
+  🌐 a VPC pertence à região;
+  <br>
+  📍 cada subnet pertence a uma única zona de disponibilidade;
+  <br>
+  🧱 distribuir subnets entre zonas é a base para distribuir servidores entre essas mesmas zonas.
+</blockquote>
 
 Mais adiante, essa estrutura permitirá criar recursos de forma mais dinâmica, aproveitando a lista de zonas consultada pelo próprio projeto.
 

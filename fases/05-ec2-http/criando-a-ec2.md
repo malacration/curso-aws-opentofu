@@ -14,6 +14,17 @@ Nesta etapa, vamos criar a base da máquina que servirá a página HTTP.
 
 <blockquote><strong>⚡ Visão rápida:</strong> antes de preparar a página e o Apache, precisamos ter uma instância acessível, com IP público e um security group permitindo HTTP.</blockquote>
 
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group">Abrir documentação do recurso <code>aws_security_group</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance">Abrir documentação do recurso <code>aws_instance</code></a>
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/values/outputs">Abrir documentação do bloco <code>output</code></a>
+</blockquote>
+
 ## 5.1.1 Security Group para HTTP
 
 Crie um arquivo chamado `ec2.tf`.

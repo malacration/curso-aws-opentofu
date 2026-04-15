@@ -76,10 +76,14 @@ provider "aws" {
 
 Esse bloco diz ao OpenTofu que ele vai conversar com a AWS e que a região desejada para este exemplo é `sa-east-1`.
 
-Documentação oficial do Terraform:
-
-- bloco `provider`: https://developer.hashicorp.com/terraform/language/providers/configuration
-- provider AWS: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/providers/configuration">Abrir documentação do bloco <code>provider</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs">Abrir documentação do provider AWS</a>
+</blockquote>
 
 ## 2.1.5 Criar o bloco `data "aws_caller_identity"`
 
@@ -93,10 +97,14 @@ Esse `data` source consulta quem é a identidade autenticada atual na AWS.
 
 É por meio dele que vamos capturar informações como o `account_id` da conta conectada.
 
-Documentação oficial do Terraform:
-
-- bloco `data`: https://developer.hashicorp.com/terraform/language/block/data
-- `aws_caller_identity`: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/block/data">Abrir documentação do bloco <code>data</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity">Abrir documentação do data source <code>aws_caller_identity</code></a>
+</blockquote>
 
 ## 2.1.6 Criar o bloco `data "aws_region"`
 
@@ -108,10 +116,14 @@ data "aws_region" "current" {}
 
 Esse `data` source consulta a região atualmente usada pelo provider da AWS.
 
-Documentação oficial do Terraform:
-
-- bloco `data`: https://developer.hashicorp.com/terraform/language/block/data
-- `aws_region`: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/block/data">Abrir documentação do bloco <code>data</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region">Abrir documentação do data source <code>aws_region</code></a>
+</blockquote>
 
 ## 2.1.7 Criar os blocos de `output`
 
@@ -132,9 +144,12 @@ Esses blocos servem para exibir no final do `apply`:
 - o `account_id` da conta autenticada;
 - a região atual consultada no provider.
 
-Documentação oficial do Terraform:
-
-- bloco `output`: https://developer.hashicorp.com/terraform/language/values/outputs
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/values/outputs">Abrir documentação do bloco <code>output</code></a>
+</blockquote>
 
 ## 2.1.8 Exemplo completo de `main.tf`
 

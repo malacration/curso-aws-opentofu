@@ -14,6 +14,17 @@ Nesta etapa, vamos subir mais duas instâncias EC2 — uma por subnet privada �
 
 <blockquote><strong>⚡ Visão rápida:</strong> hoje o projeto tem uma única instância apontada diretamente pelo Target Group. Vamos substituir esse recurso individual por uma coleção usando <code>count</code>, o mesmo recurso de repetição visto na fase 4.</blockquote>
 
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance">Abrir documentação do recurso <code>aws_instance</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group_attachment">Abrir documentação do recurso <code>aws_lb_target_group_attachment</code></a>
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/meta-arguments/count">Abrir documentação do meta-argumento <code>count</code></a>
+</blockquote>
+
 ## 6.3.1 Estado atual do projeto
 
 Ao chegar neste item, o `ec2.tf` tem uma instância única:

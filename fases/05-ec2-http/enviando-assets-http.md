@@ -14,6 +14,19 @@ Nesta etapa, vamos preparar os arquivos HTML e ligá-los ao `user_data` da inst�
 
 <blockquote><strong>⚡ Visão rápida:</strong> em vez de usar SSH para copiar arquivos, vamos fazer o OpenTofu ler assets locais e incorporá-los ao script de inicialização da EC2.</blockquote>
 
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance">Abrir documentação do recurso <code>aws_instance</code></a>
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/functions/templatefile">Abrir documentação da função <code>templatefile()</code></a>
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/functions/file">Abrir documentação da função <code>file()</code></a>
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/functions/filesha256">Abrir documentação da função <code>filesha256()</code></a>
+</blockquote>
+
 ## 5.2.1 Criar a estrutura de assets
 
 Crie um diretório no projeto chamado `assets/http`.

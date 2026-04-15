@@ -32,6 +32,13 @@ output "primeiro_plano" {
 
 Esse exemplo serve apenas para praticar a estrutura básica de um arquivo `.tf` e entender como um bloco é declarado no OpenTofu.
 
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/values/outputs">Abrir documentação do bloco <code>output</code></a>
+</blockquote>
+
 ## 1.1.4 Executar `tofu init`
 
 Depois de criar o arquivo, execute:

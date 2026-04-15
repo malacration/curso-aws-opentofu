@@ -14,9 +14,14 @@ Nesta etapa, vamos consultar quantas zonas de disponibilidade existem na região
 
 <blockquote><strong>⚡ Visão rápida:</strong> a VPC vive dentro de uma região. Então, na prática, vamos consultar as zonas de disponibilidade da região atual e usar esse resultado no projeto.</blockquote>
 
-Referências oficiais:
-
-- `aws_availability_zones`: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones">Abrir documentação do data source <code>aws_availability_zones</code></a>
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/values/outputs">Abrir documentação do bloco <code>output</code></a>
+</blockquote>
 - função `length`: https://opentofu.org/docs/language/functions/length/
 
 ## 3.4.1 Consultar as zonas disponíveis

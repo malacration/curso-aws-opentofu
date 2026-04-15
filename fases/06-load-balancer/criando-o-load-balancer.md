@@ -14,6 +14,23 @@ Nesta etapa, vamos criar um Application Load Balancer e apontá-lo para a EC2 ex
 
 <blockquote><strong>⚡ Visão rápida:</strong> o Load Balancer recebe as requisições da internet e as repassa para as instâncias registradas. Ele expõe um DNS próprio — exclusivo do serviço gerenciado pela AWS — que substitui o IP público da EC2 como ponto de acesso.</blockquote>
 
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group">Abrir documentação do recurso <code>aws_security_group</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb">Abrir documentação do recurso <code>aws_lb</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group">Abrir documentação do recurso <code>aws_lb_target_group</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_listener">Abrir documentação do recurso <code>aws_lb_listener</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb_target_group_attachment">Abrir documentação do recurso <code>aws_lb_target_group_attachment</code></a>
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/values/outputs">Abrir documentação do bloco <code>output</code></a>
+</blockquote>
+
 ## 6.1.1 O que é um Application Load Balancer?
 
 Um **Application Load Balancer (ALB)** é um serviço gerenciado da AWS que distribui o tráfego HTTP entre uma ou mais instâncias.

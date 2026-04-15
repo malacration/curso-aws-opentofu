@@ -14,6 +14,19 @@ Este material complementa a fase 1 com quatro conceitos que aparecem cedo em qua
 
 <blockquote><strong>⚡ Visão rápida:</strong> esta etapa aprofunda os blocos e componentes que mais aparecem em projetos reais: provider, módulo, provisioner e backend.</blockquote>
 
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://opentofu.org/docs/language/providers/configuration/">Abrir documentação de <code>provider</code> no OpenTofu</a>
+  <br>
+  <a href="https://opentofu.org/docs/language/modules/">Abrir documentação de <code>module</code> no OpenTofu</a>
+  <br>
+  <a href="https://opentofu.org/docs/language/resources/provisioners/syntax/">Abrir documentação de <code>provisioner</code> no OpenTofu</a>
+  <br>
+  <a href="https://opentofu.org/docs/language/settings/backends/configuration/">Abrir documentação de <code>backend</code> no OpenTofu</a>
+</blockquote>
+
 ## 1.3.1 O que é provider
 
 `Provider` é o componente que permite ao OpenTofu conversar com uma nuvem, API ou sistema externo.
@@ -95,13 +108,23 @@ Em projetos com colaboração entre várias pessoas, a recomendação é manter 
 
 Neste curso, vamos manter tudo localmente por praticidade, para reduzir a complexidade inicial e focar no aprendizado dos conceitos.
 
-## 1.3.5 Referências oficiais do OpenTofu
-
-- documentação geral: https://opentofu.org/docs/
-- linguagem do OpenTofu: https://opentofu.org/docs/language/
-- configuração de providers: https://opentofu.org/docs/language/providers/configuration/
-- visão geral de módulos: https://opentofu.org/docs/language/modules/
-- chamada de módulos: https://opentofu.org/docs/language/modules/syntax/
-- provisioners: https://opentofu.org/docs/language/resources/provisioners/syntax/
-- backend e armazenamento de state: https://opentofu.org/docs/language/state/backends/
-- configuração de backend: https://opentofu.org/docs/language/settings/backends/configuration/
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Referências oficiais do OpenTofu:
+  <br>
+  <a href="https://opentofu.org/docs/">Abrir documentação geral do OpenTofu</a>
+  <br>
+  <a href="https://opentofu.org/docs/language/">Abrir documentação da linguagem do OpenTofu</a>
+  <br>
+  <a href="https://opentofu.org/docs/language/providers/configuration/">Abrir documentação de configuração de providers</a>
+  <br>
+  <a href="https://opentofu.org/docs/language/modules/">Abrir visão geral de módulos</a>
+  <br>
+  <a href="https://opentofu.org/docs/language/modules/syntax/">Abrir documentação de chamada de módulos</a>
+  <br>
+  <a href="https://opentofu.org/docs/language/resources/provisioners/syntax/">Abrir documentação de provisioners</a>
+  <br>
+  <a href="https://opentofu.org/docs/language/state/backends/">Abrir documentação de backend e armazenamento de state</a>
+  <br>
+  <a href="https://opentofu.org/docs/language/settings/backends/configuration/">Abrir documentação de configuração de backend</a>
+</blockquote>

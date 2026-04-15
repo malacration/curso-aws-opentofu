@@ -22,6 +22,17 @@ De forma simplificada, ele funciona como o banco de dados do plano e da infraest
 
 É nele que o OpenTofu salva o que já foi aplicado, para depois comparar esse registro com o código `.tf` e com o ambiente real.
 
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/values/outputs">Abrir documentação do bloco <code>output</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource">Abrir documentação do recurso <code>null_resource</code></a>
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/settings">Abrir documentação do bloco <code>terraform</code></a>
+</blockquote>
+
 ## 1.2.2 Criar mais um `output`
 
 Abra o arquivo `main.tf` e adicione mais um bloco de `output`:

@@ -101,12 +101,16 @@ tofu apply
 
 Com isso, a configuração tende a ser restaurada e a VPC volta para o estado definido no código.
 
-Esse exemplo é importante porque mostra uma ideia central:
-
-- 🚫 a mudança feita no ClickOps não deveria ter acontecido;
-- 📘 o projeto local continua sendo a referência correta;
-- 🔎 o `plan` ajuda a detectar esse desvio;
-- 🔁 o `apply` ajuda a recolocar a infraestrutura no estado esperado.
+<blockquote>
+  <strong>🎯 Ideia central:</strong><br>
+  🚫 a mudança feita no ClickOps não deveria ter acontecido;
+  <br>
+  📘 o projeto local continua sendo a referência correta;
+  <br>
+  🔎 o <code>plan</code> ajuda a detectar esse desvio;
+  <br>
+  🔁 o <code>apply</code> ajuda a recolocar a infraestrutura no estado esperado.
+</blockquote>
 
 ## 3.3.6 Regra prática
 

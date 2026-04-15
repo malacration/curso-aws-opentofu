@@ -23,6 +23,17 @@ Para torná-la pública, duas condições precisam ser satisfeitas:
 - a VPC precisa ter um **Internet Gateway** anexado;
 - a subnet precisa estar associada a uma **Route Table** com uma rota para esse Internet Gateway.
 
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway">Abrir documentação do recurso <code>aws_internet_gateway</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table">Abrir documentação do recurso <code>aws_route_table</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association">Abrir documentação do recurso <code>aws_route_table_association</code></a>
+</blockquote>
+
 ## 4.4.2 Criar o Internet Gateway
 
 O Internet Gateway é o componente que conecta a VPC à internet.

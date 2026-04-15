@@ -156,7 +156,11 @@ Para remover essa definição apenas da sessão atual:
 unset AWS_PROFILE
 ```
 
-## 4.6 Referências oficiais
-
-- AWS CLI: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-- AWS CLI login: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sign-in.html
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">Abrir documentação da instalação da AWS CLI</a>
+  <br>
+  <a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sign-in.html">Abrir documentação do login da AWS CLI</a>
+</blockquote>

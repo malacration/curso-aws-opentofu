@@ -35,6 +35,15 @@ Aqui a separação é proposital:
 
 Ou seja: a VPC e as subnets não compartilham a mesma variável, porque exercem papéis diferentes no projeto.
 
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/values/variables">Abrir documentação do bloco <code>variable</code></a>
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet">Abrir documentação do recurso <code>aws_subnet</code></a>
+</blockquote>
+
 ## 4.2.2 Preencher os valores no `terraform.tfvars`
 
 Agora ajuste o `terraform.tfvars`:

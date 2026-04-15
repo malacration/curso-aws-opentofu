@@ -12,7 +12,7 @@ next_url: /fases/03-nuvem-particular-vpc/
 
 Nesta etapa, vamos introduzir o conceito de módulos e por que manter módulos bem definidos é tão útil em projetos reais.
 
-<p><strong style="color: var(--accent);">Ideia central:</strong> um módulo é uma unidade reutilizável de infraestrutura com <strong>entrada</strong>, <strong>responsabilidade</strong> e <strong>saída</strong>.</p>
+<blockquote><strong>🎯 Ideia central:</strong> um módulo é uma unidade reutilizável de infraestrutura com <strong>entrada</strong>, <strong>responsabilidade</strong> e <strong>saída</strong>.</blockquote>
 
 ## 2.6.1 O que é um módulo
 

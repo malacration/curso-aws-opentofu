@@ -26,6 +26,15 @@ Ou seja: existe uma relação direta entre as duas listas.
 
 Quando isso acontece, podemos usar um comando de repetição.
 
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet">Abrir documentação do recurso <code>aws_subnet</code></a>
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/meta-arguments/count">Abrir documentação do meta-argumento <code>count</code></a>
+</blockquote>
+
 ## 4.3.2 Antes e depois
 
 <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:16px; align-items:start;">
@@ -132,10 +141,12 @@ Agora, o projeto passa a ter uma coleção de recursos:
 
 Essas duas coisas não são equivalentes para o banco de dados do OpenTofu.
 
-Essa é a ideia central:
-
-- antes, existiam `3 recursos` com nomes próprios;
-- agora, existe `1 coleção` que contém `3 recursos`.
+<blockquote>
+  <strong>🎯 Ideia central:</strong><br>
+  antes, existiam <code>3 recursos</code> com nomes próprios;
+  <br>
+  agora, existe <code>1 coleção</code> que contém <code>3 recursos</code>.
+</blockquote>
 
 Isso parece parecido olhando a infraestrutura, mas não é a mesma coisa olhando a referência lógica salva no `state`.
 

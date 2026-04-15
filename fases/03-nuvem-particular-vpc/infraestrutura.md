@@ -24,10 +24,14 @@ Isso influencia latência, disponibilidade de serviços, soberania de dados e pr
 
 ![Mapa global simplificado das regiões da AWS]({{ '/fases/03-nuvem-particular-vpc/assets/aws-regioes-globais.png' | relative_url }})
 
-Referências oficiais da AWS:
-
-- infraestrutura global: https://aws.amazon.com/about-aws/global-infrastructure/
-- regiões e zonas de disponibilidade: https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial da AWS:
+  <br>
+  <a href="https://aws.amazon.com/about-aws/global-infrastructure/">Abrir visão geral da infraestrutura global da AWS</a>
+  <br>
+  <a href="https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions-availability-zones.html">Abrir documentação de regiões e zonas de disponibilidade</a>
+</blockquote>
 
 ## 3.1.2 Zonas de disponibilidade dentro de uma região
 
@@ -55,9 +59,12 @@ Para esta região, a documentação lista:
 - `sae1-az2`
 - `sae1-az3`
 
-Referência oficial da AWS:
-
-- Availability Zones da AWS: https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial da AWS:
+  <br>
+  <a href="https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-availability-zones.html">Abrir documentação de Availability Zones da AWS</a>
+</blockquote>
 
 ## 3.1.5 Subnets e zona de disponibilidade
 
@@ -69,10 +76,14 @@ Isso é importante porque, ao criar subnets, você está distribuindo partes da 
 
 A documentação da AWS afirma explicitamente que cada subnet deve residir inteiramente dentro de uma Availability Zone.
 
-Referências oficiais da AWS:
-
-- VPC basics: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-subnet-basics.html
-- Subnets for your VPC: https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial da AWS:
+  <br>
+  <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-subnet-basics.html">Abrir documentação de fundamentos de VPC e subnets</a>
+  <br>
+  <a href="https://docs.aws.amazon.com/vpc/latest/userguide/configure-subnets.html">Abrir documentação de configuração de subnets na VPC</a>
+</blockquote>
 
 ## 3.1.6 Estrutura completa: região, VPC, zonas e subnets
 

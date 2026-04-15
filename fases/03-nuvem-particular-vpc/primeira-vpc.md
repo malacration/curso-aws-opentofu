@@ -21,9 +21,14 @@ Vamos fazer isso em duas etapas:
 - primeiro criar a VPC;
 - depois modificar a infraestrutura para adicionar o nome por variável.
 
-Referência oficial:
-
-- recurso `aws_vpc`: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc
+<blockquote>
+  <strong>🧠 Mergulho profundo</strong><br>
+  Documentação oficial:
+  <br>
+  <a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc">Abrir documentação do recurso <code>aws_vpc</code></a>
+  <br>
+  <a href="https://developer.hashicorp.com/terraform/language/values/outputs">Abrir documentação do bloco <code>output</code></a>
+</blockquote>
 
 ## 3.2.1 Criando a VPC
 

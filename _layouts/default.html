@@ -14,11 +14,12 @@
         --text: #e5eefc;
         --text-soft: #aebdd7;
         --link: #7dd3fc;
+        --link-visited: #c4b5fd;
         --border: rgba(148, 163, 184, 0.22);
         --code-bg: #0b1220;
         --accent: #22c55e;
         --shadow: 0 24px 60px rgba(2, 6, 23, 0.35);
-        --topbar-offset: 126px;
+        --topbar-offset: 72px;
       }
 
       [data-theme="light"] {
@@ -29,6 +30,7 @@
         --text: #172033;
         --text-soft: #52617d;
         --link: #0f6db6;
+        --link-visited: #7c3aed;
         --border: rgba(15, 23, 42, 0.12);
         --code-bg: #edf2f8;
         --accent: #0f8a52;
@@ -54,44 +56,61 @@
 
       a {
         color: var(--link);
+        text-decoration: underline;
+        text-decoration-thickness: 1.5px;
+        text-underline-offset: 0.16em;
+        transition: color 140ms ease, text-decoration-color 140ms ease, background 140ms ease, border-color 140ms ease;
+      }
+
+      a:visited {
+        color: var(--link-visited);
+      }
+
+      a:hover {
+        text-decoration-thickness: 2px;
+      }
+
+      a:focus-visible {
+        outline: 2px solid var(--link);
+        outline-offset: 2px;
+        border-radius: 6px;
       }
 
       .shell {
         width: 100%;
         max-width: 1760px;
         margin: 0 auto;
-        padding: 24px clamp(16px, 2vw, 32px) 64px;
+        padding: 28px clamp(16px, 2vw, 32px) 64px;
       }
 
       .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: var(--bg-panel);
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(18px);
+      }
+
+      .topbar-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 16px;
-        margin-bottom: 28px;
-        position: sticky;
-        top: 12px;
-        z-index: 40;
-        padding: 14px 16px;
-        border: 1px solid var(--border);
-        border-radius: 22px;
-        background: var(--bg-panel);
-        backdrop-filter: blur(18px);
-        box-shadow: var(--shadow);
-        transition: padding 180ms ease, border-radius 180ms ease, background 180ms ease, transform 180ms ease;
-        isolation: isolate;
+        max-width: 1760px;
+        margin: 0 auto;
+        padding: 12px clamp(16px, 2vw, 32px);
+        transition: padding 180ms ease;
       }
 
       .topbar-actions {
         display: flex;
         align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: flex-end;
+        gap: 8px;
+        flex-shrink: 0;
       }
 
       .brand {
-        text-decoration: none;
         color: inherit;
         min-width: 0;
       }
@@ -114,41 +133,41 @@
       .brand span {
         display: block;
         color: var(--text-soft);
-        font-size: 0.95rem;
+        font-size: 0.88rem;
         max-width: 720px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         transition: font-size 180ms ease, max-height 180ms ease, opacity 180ms ease, margin 180ms ease;
-        max-height: 2.1rem;
+        max-height: 1.9rem;
         opacity: 1;
       }
 
-      body.is-scrolled .topbar {
-        padding: 10px 14px;
-        border-radius: 18px;
+      body.is-scrolled .topbar-inner {
+        padding-top: 8px;
+        padding-bottom: 8px;
       }
 
       body.is-scrolled .brand strong {
-        font-size: 0.98rem;
+        font-size: 0.96rem;
       }
 
       body.is-scrolled .brand-author {
-        font-size: 0.75rem;
-        opacity: 0.85;
+        font-size: 0.76rem;
+        opacity: 0.88;
       }
 
       body.is-scrolled .brand span {
-        font-size: 0.82rem;
-        max-height: 1.05rem;
-        opacity: 0.82;
+        font-size: 0.78rem;
+        max-height: 1rem;
+        opacity: 0.76;
       }
 
-      .theme-toggle,
-      .focus-toggle,
-      .index-toolbar-toggle,
-      .github-link,
-      .menu-toggle {
+      .github-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
         border: 1px solid var(--border);
         background: var(--bg-panel);
         color: var(--text);
@@ -158,19 +177,8 @@
         box-shadow: var(--shadow);
       }
 
-      .theme-toggle:hover,
-      .focus-toggle:hover,
-      .index-toolbar-toggle:hover,
-      .github-link:hover,
-      .menu-toggle:hover {
+      .github-link:hover {
         background: var(--bg-panel-soft);
-      }
-
-      .github-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        text-decoration: none;
       }
 
       .github-link svg {
@@ -178,10 +186,122 @@
         height: 16px;
       }
 
-      .menu-toggle {
+      .controls-popover {
+        position: relative;
+      }
+
+      .controls-trigger {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text);
+        border-radius: 10px;
+        cursor: pointer;
+        padding: 0;
+        flex-shrink: 0;
+      }
+
+      .controls-trigger:hover {
+        background: var(--bg-panel-soft);
+      }
+
+      .controls-trigger[aria-expanded="true"] {
+        background: var(--bg-panel-soft);
+        border-color: color-mix(in srgb, var(--link) 35%, var(--border));
+      }
+
+      .controls-trigger svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .controls-panel {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        min-width: 220px;
+        background: var(--bg-panel);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        z-index: 100;
+      }
+
+      .controls-panel[hidden] {
+        display: none;
+      }
+
+      .ctrl-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 16px;
+        cursor: pointer;
+        border-bottom: 1px solid var(--border);
+        user-select: none;
+        transition: background 120ms ease;
+      }
+
+      .ctrl-row:last-child {
+        border-bottom: none;
+      }
+
+      .ctrl-row:hover {
+        background: var(--bg-panel-soft);
+      }
+
+      .ctrl-row[hidden] {
+        display: none;
+      }
+
+      .ctrl-label {
+        font-size: 0.88rem;
+        color: var(--text);
+      }
+
+      .switch-track {
+        position: relative;
+        width: 38px;
+        height: 22px;
+        background: rgba(148, 163, 184, 0.22);
+        border-radius: 999px;
+        transition: background 200ms ease;
+        flex-shrink: 0;
+      }
+
+      .switch-track:has(input:checked) {
+        background: color-mix(in srgb, var(--accent) 42%, transparent);
+      }
+
+      .switch-track input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+      }
+
+      .switch-thumb {
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 16px;
+        height: 16px;
+        background: var(--text-soft);
+        border-radius: 50%;
+        transition: transform 200ms ease, background 200ms ease;
+        pointer-events: none;
+      }
+
+      .switch-track:has(input:checked) .switch-thumb {
+        transform: translateX(16px);
+        background: var(--accent);
       }
 
       .layout {
@@ -505,6 +625,20 @@
         border-radius: 10px;
       }
 
+      blockquote a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin: 4px 0;
+        padding: 2px 0;
+      }
+
+      blockquote a::after {
+        content: "↗";
+        font-size: 0.88em;
+        opacity: 0.82;
+      }
+
       table {
         width: 100%;
         border-collapse: collapse;
@@ -601,6 +735,14 @@
         display: block;
       }
 
+      .nav-card:visited,
+      .sidebar-links a:visited,
+      .sidebar-sublinks a:visited,
+      .brand a:visited,
+      .topbar a.github-link:visited {
+        color: inherit;
+      }
+
       .site-footer {
         margin-top: 24px;
         color: var(--text-soft);
@@ -634,9 +776,41 @@
         display: none;
       }
 
+      .hamburger {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--border);
+        background: transparent;
+        color: var(--text);
+        border-radius: 10px;
+        cursor: pointer;
+        padding: 0;
+        flex-shrink: 0;
+      }
+
+      .hamburger svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .sidebar-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 49;
+        background: rgba(2, 6, 23, 0.6);
+      }
+
+      body.mobile-menu-open .sidebar-backdrop {
+        display: block;
+      }
+
       @media (max-width: 1360px) {
         :root {
-          --topbar-offset: 118px;
+          --topbar-offset: 68px;
         }
 
         .layout {
@@ -654,7 +828,7 @@
 
       @media (max-width: 980px) {
         :root {
-          --topbar-offset: 108px;
+          --topbar-offset: 64px;
         }
 
         .layout {
@@ -668,7 +842,7 @@
 
       @media (max-width: 720px) {
         :root {
-          --topbar-offset: 98px;
+          --topbar-offset: 56px;
         }
 
         .shell {
@@ -680,14 +854,14 @@
           border-radius: 18px;
         }
 
-        .topbar {
-          align-items: flex-start;
-          flex-direction: column;
+        .brand strong,
+        .brand-author {
+          display: none;
         }
 
-        .topbar-actions {
-          width: 100%;
-          justify-content: flex-start;
+        .brand span {
+          max-width: 48vw;
+          font-size: 0.8rem;
         }
 
         .layout {
@@ -698,8 +872,45 @@
           grid-template-columns: 1fr;
         }
 
+        .hamburger {
+          display: inline-flex;
+        }
+
+        #menu-switch-item {
+          display: none;
+        }
+
+        .github-link span {
+          display: none;
+        }
+
         .sidebar {
-          position: static;
+          position: fixed !important;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: min(300px, 85vw);
+          z-index: 50;
+          transform: translateX(-100%);
+          transition: transform 280ms ease;
+          overflow-y: auto;
+          border-radius: 0;
+          gap: 0;
+        }
+
+        .sidebar .sidebar-panel {
+          border-radius: 0;
+          border: none;
+          border-right: 1px solid var(--border);
+          min-height: 100%;
+        }
+
+        body.mobile-menu-open .sidebar {
+          transform: translateX(0);
+        }
+
+        .sidebar-hidden .layout {
+          grid-template-columns: 1fr;
         }
 
         .page-index-panel {
@@ -709,26 +920,70 @@
     </style>
   </head>
   <body>
-    <div class="shell">
-      <div class="topbar">
-        <a class="brand" href="{{ '/' | relative_url }}">
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
           <strong>{{ site.title }}</strong>
           <small class="brand-author">Por Andrew Ramires</small>
-        </a>
+          <span>{{ site.description }}</span>
+        </div>
         <div class="topbar-actions">
-          <a class="github-link" href="https://github.com/malacration" target="_blank" rel="noopener noreferrer" aria-label="Abrir perfil GitHub de Andrew Ramires" title="Perfil GitHub de Andrew Ramires">
+          <button class="hamburger" id="hamburger-btn" type="button" aria-label="Abrir menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </button>
+          <a class="github-link" href="https://github.com/malacration" target="_blank" rel="noopener noreferrer" aria-label="Perfil GitHub" title="Perfil GitHub de Andrew Ramires">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12A11.5 11.5 0 0 0 8.36 22.93c.58.11.79-.25.79-.56v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.69.08-.69 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.72-1.54-2.54-.29-5.22-1.27-5.22-5.67 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.18-1.49 3.14-1.18 3.14-1.18.63 1.59.24 2.77.12 3.06.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.37-5.25 5.66.41.35.78 1.05.78 2.12v3.14c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
             <span>Perfil GitHub</span>
           </a>
-          <button class="menu-toggle" type="button" id="menu-toggle" aria-label="Ocultar menu" title="Ocultar menu">
-            <span>Menu</span>
-          </button>
-          <button class="index-toolbar-toggle" type="button" id="page-index-toolbar-toggle" hidden>Índice</button>
-          <button class="focus-toggle" type="button" id="focus-toggle">Modo foco</button>
-          <button class="theme-toggle" type="button" id="theme-toggle">Alternar tema</button>
+          <div class="controls-popover" id="controls-popover">
+            <button class="controls-trigger" id="controls-trigger" type="button" aria-label="Preferências de visualização" title="Preferências de visualização">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <line x1="4" y1="6" x2="20" y2="6"/><circle cx="8" cy="6" r="2" fill="currentColor" stroke="none"/>
+                <line x1="4" y1="12" x2="20" y2="12"/><circle cx="16" cy="12" r="2" fill="currentColor" stroke="none"/>
+                <line x1="4" y1="18" x2="20" y2="18"/><circle cx="12" cy="18" r="2" fill="currentColor" stroke="none"/>
+              </svg>
+            </button>
+            <div class="controls-panel" id="controls-panel" hidden>
+              <label class="ctrl-row" id="menu-switch-item">
+                <span class="ctrl-label">Menu lateral</span>
+                <span class="switch-track">
+                  <input type="checkbox" id="menu-switch">
+                  <span class="switch-thumb"></span>
+                </span>
+              </label>
+              <label class="ctrl-row" id="index-switch-item" hidden>
+                <span class="ctrl-label">Índice da página</span>
+                <span class="switch-track">
+                  <input type="checkbox" id="index-switch">
+                  <span class="switch-thumb"></span>
+                </span>
+              </label>
+              <label class="ctrl-row">
+                <span class="ctrl-label">Tema claro</span>
+                <span class="switch-track">
+                  <input type="checkbox" id="theme-switch">
+                  <span class="switch-thumb"></span>
+                </span>
+              </label>
+              <label class="ctrl-row">
+                <span class="ctrl-label">Modo foco</span>
+                <span class="switch-track">
+                  <input type="checkbox" id="focus-switch">
+                  <span class="switch-thumb"></span>
+                </span>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
+    <div class="shell">
+      <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
       <div class="layout">
         <aside class="sidebar" id="sidebar">
           <nav class="sidebar-panel">
@@ -859,46 +1114,88 @@
         var prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
         var theme = stored || (prefersLight ? "light" : "dark");
 
+        var themeSwitch = document.getElementById("theme-switch");
+
         function applyTheme(nextTheme) {
           root.setAttribute("data-theme", nextTheme);
           localStorage.setItem("theme", nextTheme);
+          if (themeSwitch) {
+            themeSwitch.checked = (nextTheme === "light");
+          }
         }
 
         applyTheme(theme);
 
-        var button = document.getElementById("theme-toggle");
-        if (button) {
-          button.addEventListener("click", function () {
-            var current = root.getAttribute("data-theme") || "dark";
-            applyTheme(current === "dark" ? "light" : "dark");
+        if (themeSwitch) {
+          themeSwitch.addEventListener("change", function () {
+            applyTheme(themeSwitch.checked ? "light" : "dark");
           });
         }
 
-        var menuButton = document.getElementById("menu-toggle");
-        var focusButton = document.getElementById("focus-toggle");
-        var indexToolbarButton = document.getElementById("page-index-toolbar-toggle");
+        function applyScrollHeaderState() {
+          document.body.classList.toggle("is-scrolled", window.scrollY > 18);
+        }
+
+        applyScrollHeaderState();
+        window.addEventListener("scroll", applyScrollHeaderState, { passive: true });
+
+        var menuSwitch = document.getElementById("menu-switch");
+        var focusSwitch = document.getElementById("focus-switch");
+        var indexSwitch = document.getElementById("index-switch");
+        var indexSwitchItem = document.getElementById("index-switch-item");
+        var controlsPopover = document.getElementById("controls-popover");
+        var controlsTrigger = document.getElementById("controls-trigger");
+        var controlsPanel = document.getElementById("controls-panel");
         var sidebarHidden = localStorage.getItem("sidebarHidden") === "true";
         var focusMode = localStorage.getItem("focusMode") === "true";
 
+        function setControlsPanelState(open) {
+          if (!controlsPanel || !controlsTrigger) {
+            return;
+          }
+
+          controlsPanel.hidden = !open;
+          controlsTrigger.setAttribute("aria-expanded", open ? "true" : "false");
+        }
+
+        setControlsPanelState(false);
+
+        if (controlsTrigger && controlsPanel) {
+          controlsTrigger.addEventListener("click", function (event) {
+            event.stopPropagation();
+            setControlsPanelState(controlsPanel.hidden);
+          });
+
+          controlsPanel.addEventListener("click", function (event) {
+            event.stopPropagation();
+          });
+
+          document.addEventListener("click", function (event) {
+            if (!controlsPopover || !controlsPopover.contains(event.target)) {
+              setControlsPanelState(false);
+            }
+          });
+
+          document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+              setControlsPanelState(false);
+              closeMobileMenu();
+            }
+          });
+        }
+
         function applySidebarState(hidden) {
           document.body.classList.toggle("sidebar-hidden", hidden);
-          if (menuButton) {
-            var label = hidden ? "Mostrar menu" : "Ocultar menu";
-            menuButton.setAttribute("aria-label", label);
-            menuButton.setAttribute("title", label);
-            menuButton.setAttribute("aria-pressed", hidden ? "false" : "true");
+          if (menuSwitch) {
+            menuSwitch.checked = !hidden;
           }
           localStorage.setItem("sidebarHidden", hidden ? "true" : "false");
         }
 
         function applyFocusMode(enabled) {
           document.body.classList.toggle("focus-mode", enabled);
-          if (focusButton) {
-            var label = enabled ? "Sair do foco" : "Modo foco";
-            focusButton.textContent = label;
-            focusButton.setAttribute("aria-label", label);
-            focusButton.setAttribute("title", label);
-            focusButton.setAttribute("aria-pressed", enabled ? "true" : "false");
+          if (focusSwitch) {
+            focusSwitch.checked = enabled;
           }
           localStorage.setItem("focusMode", enabled ? "true" : "false");
         }
@@ -906,26 +1203,44 @@
         applySidebarState(sidebarHidden);
         applyFocusMode(focusMode);
 
-        function applyScrollHeaderState() {
-          document.body.classList.toggle("is-scrolled", window.scrollY > 24);
-        }
-
-        applyScrollHeaderState();
-        window.addEventListener("scroll", applyScrollHeaderState, { passive: true });
-
-        if (menuButton) {
-          menuButton.addEventListener("click", function () {
-            var isHidden = document.body.classList.contains("sidebar-hidden");
-            applySidebarState(!isHidden);
+        if (menuSwitch) {
+          menuSwitch.addEventListener("change", function () {
+            applySidebarState(!menuSwitch.checked);
           });
         }
 
-        if (focusButton) {
-          focusButton.addEventListener("click", function () {
-            var enabled = document.body.classList.contains("focus-mode");
-            applyFocusMode(!enabled);
+        if (focusSwitch) {
+          focusSwitch.addEventListener("change", function () {
+            applyFocusMode(focusSwitch.checked);
           });
         }
+
+        var hamburgerBtn = document.getElementById("hamburger-btn");
+        var sidebarBackdrop = document.getElementById("sidebar-backdrop");
+
+        function closeMobileMenu() {
+          document.body.classList.remove("mobile-menu-open");
+        }
+
+        if (hamburgerBtn) {
+          hamburgerBtn.addEventListener("click", function () {
+            document.body.classList.toggle("mobile-menu-open");
+            setControlsPanelState(false);
+          });
+        }
+
+        if (sidebarBackdrop) {
+          sidebarBackdrop.addEventListener("click", closeMobileMenu);
+        }
+
+        window.addEventListener("resize", function () {
+          if (window.innerWidth > 720) {
+            closeMobileMenu();
+          }
+          if (window.innerWidth > 980) {
+            setControlsPanelState(false);
+          }
+        });
 
         var sidebarSectionsToggle = document.getElementById("sidebar-sections-toggle");
         var sidebarSections = Array.prototype.slice.call(document.querySelectorAll("[data-sidebar-section]"));
@@ -1418,12 +1733,8 @@
           indexToggle.textContent = "Ocultar";
           indexToggle.setAttribute("aria-label", "Ocultar índice da página");
           indexToggle.setAttribute("title", "Ocultar índice da página");
-          if (indexToolbarButton) {
-            var label = hidden ? "Mostrar índice" : "Ocultar índice";
-            indexToolbarButton.textContent = label;
-            indexToolbarButton.setAttribute("aria-label", label);
-            indexToolbarButton.setAttribute("title", label);
-            indexToolbarButton.setAttribute("aria-pressed", hidden ? "false" : "true");
+          if (indexSwitch) {
+            indexSwitch.checked = !hidden;
           }
           localStorage.setItem("pageIndexHidden", hidden ? "true" : "false");
         }
@@ -1463,8 +1774,8 @@
               indexList.appendChild(item);
             });
             indexBox.hidden = false;
-            if (indexToolbarButton) {
-              indexToolbarButton.hidden = false;
+            if (indexSwitchItem) {
+              indexSwitchItem.hidden = false;
             }
             applyPageIndexState(pageIndexHidden);
             if (indexToggle) {
@@ -1472,10 +1783,9 @@
                 applyPageIndexState(true);
               });
             }
-            if (indexToolbarButton) {
-              indexToolbarButton.addEventListener("click", function () {
-                var isHidden = document.body.classList.contains("page-index-hidden");
-                applyPageIndexState(!isHidden);
+            if (indexSwitch) {
+              indexSwitch.addEventListener("change", function () {
+                applyPageIndexState(!indexSwitch.checked);
               });
             }
           }
