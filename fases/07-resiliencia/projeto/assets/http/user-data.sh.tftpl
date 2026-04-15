@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+apt-get update -y
+apt-get install -y apache2
+
+cat >/var/www/html/index.html <<'HTML'
+${index_html}
+HTML
+
+# Captura o hostname da instância
+INSTANCE_ID=$(cat /etc/hostname)
+
+# Substitui o marcador pelo hostname real da instância
+sed -i "s/__INSTANCE_ID__/$${INSTANCE_ID}/g" /var/www/html/index.html
+
+chown -R www-data:www-data /var/www/html
+systemctl enable apache2
+systemctl restart apache2

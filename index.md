@@ -8,9 +8,15 @@ optional_title: 2. Ubuntu no Windows (WSL)
 optional_url: /ubuntu-no-windows-wsl/
 ---
 
-# 1. Curso AWS + OpenTofu
+# 1. OpenTofu na AWS: do Zero à Infraestrutura Real
 
-Este site reúne os guias de preparação do ambiente do curso.
+<div style="padding: 1.25rem 1.4rem; border: 1px solid var(--border); border-radius: 1rem; background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(125, 211, 252, 0.08)); margin-bottom: 1.25rem;">
+  <p style="margin: 0 0 0.5rem 0; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-soft);"><strong>Infraestrutura como código na prática</strong></p>
+  <h2 style="margin: 0 0 0.65rem 0; font-size: clamp(1.5rem, 2.6vw, 2.4rem); line-height: 1.15;">Construa uma base real na AWS com VPC, subnets, EC2, user_data e load balancer.</h2>
+  <p style="margin: 0; color: var(--text-soft);">Este curso foi organizado para sair da preparação do ambiente e chegar em uma arquitetura funcional, versionada e reproduzível com OpenTofu.</p>
+</div>
+
+<blockquote><strong>⚡ Visão rápida:</strong> comece por esta página para entender o fluxo do curso, os pré-requisitos e os caminhos alternativos para Windows e Linux.</blockquote>
 
 Todo o material foi pensado para distribuições baseadas em Debian, preferencialmente `Ubuntu`.
 
@@ -54,5 +60,5 @@ O fluxo principal do curso está separado por ferramenta:
 ## 1.6 Guias complementares
 
 - [7. Conceitos do OpenTofu]({{ '/conceitos-opentofu/' | relative_url }})
-- [8. Melhor desempenho no WSL]({{ '/wsl-desempenho/' | relative_url }})
+- [2.1 Melhor desempenho no WSL]({{ '/wsl-desempenho/' | relative_url }})
 - [Script de apoio para CA corporativa]({{ '/scripts/install-proxy-ca.sh' | relative_url }})

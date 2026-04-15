@@ -4,3 +4,7 @@ _site/
 .sass-cache/
 .bundle/
 vendor/bundle/
+.terraform
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup

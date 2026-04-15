@@ -3,5 +3,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    user: "${DOCKER_UID:-1001}:${DOCKER_GID:-1001}"
     ports:
       - "4000:4000"
+      - "35729:35729"
+    volumes:
+      - .:/srv/jekyll
+    command: ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--livereload", "--livereload-port", "35729", "--force_polling"]

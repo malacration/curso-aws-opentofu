@@ -6,13 +6,15 @@ prev_title: 5. OpenTofu
 prev_url: /opentofu/
 next_title: 7. Conceitos do OpenTofu
 next_url: /conceitos-opentofu/
-optional_title: 8. Melhor desempenho no WSL
+optional_title: 2.1 Melhor desempenho no WSL
 optional_url: /wsl-desempenho/
 ---
 
 # 6. Diretório do Projeto e VS Code
 
 Este passo organiza o ambiente do curso e garante que você abra a pasta correta no `VS Code`.
+
+<blockquote><strong>⚡ Visão rápida:</strong> aqui a meta é trabalhar no diretório certo, no lugar certo do sistema, com o editor apontando exatamente para o projeto do curso.</blockquote>
 
 ## 6.1 Se você acabou de clonar o projeto
 
@@ -44,6 +46,10 @@ cd ~/cursos
 ```
 
 ## 6.3 Abrir esse diretório no VS Code
+
+Se você ainda não instalou o `VS Code`, use o guia oficial:
+
+- https://code.visualstudio.com/docs/setup/setup-overview
 
 Ainda dentro da pasta do curso, execute:
 

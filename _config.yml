@@ -1,4 +1,3 @@
-title: AWS + OpenTofu
-description: Guias do curso para ambiente Debian-based, preferencialmente Ubuntu
+title: "OpenTofu na AWS: do Zero à Infraestrutura Real"
 theme: minima
 markdown: kramdown

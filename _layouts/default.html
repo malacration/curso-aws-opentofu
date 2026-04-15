@@ -18,6 +18,7 @@
         --code-bg: #0b1220;
         --accent: #22c55e;
         --shadow: 0 24px 60px rgba(2, 6, 23, 0.35);
+        --topbar-offset: 126px;
       }
 
       [data-theme="light"] {
@@ -32,6 +33,10 @@
         --code-bg: #edf2f8;
         --accent: #0f8a52;
         --shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+      }
+
+      *, *::before, *::after {
+        box-sizing: border-box;
       }
 
       html, body {
@@ -52,9 +57,10 @@
       }
 
       .shell {
-        max-width: 1240px;
+        width: 100%;
+        max-width: 1760px;
         margin: 0 auto;
-        padding: 24px 20px 64px;
+        padding: 24px clamp(16px, 2vw, 32px) 64px;
       }
 
       .topbar {
@@ -63,32 +69,86 @@
         justify-content: space-between;
         gap: 16px;
         margin-bottom: 28px;
+        position: sticky;
+        top: 12px;
+        z-index: 40;
+        padding: 14px 16px;
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        background: var(--bg-panel);
+        backdrop-filter: blur(18px);
+        box-shadow: var(--shadow);
+        transition: padding 180ms ease, border-radius 180ms ease, background 180ms ease, transform 180ms ease;
+        isolation: isolate;
       }
 
       .topbar-actions {
         display: flex;
         align-items: center;
         gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
       }
 
       .brand {
         text-decoration: none;
         color: inherit;
+        min-width: 0;
       }
 
       .brand strong {
         display: block;
         font-size: 1rem;
         letter-spacing: 0.02em;
+        transition: font-size 180ms ease;
+      }
+
+      .brand-author {
+        display: block;
+        margin-top: 0.2rem;
+        color: var(--text-soft);
+        font-size: 0.82rem;
+        transition: font-size 180ms ease, opacity 180ms ease;
       }
 
       .brand span {
         display: block;
         color: var(--text-soft);
         font-size: 0.95rem;
+        max-width: 720px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: font-size 180ms ease, max-height 180ms ease, opacity 180ms ease, margin 180ms ease;
+        max-height: 2.1rem;
+        opacity: 1;
       }
 
-      .theme-toggle {
+      body.is-scrolled .topbar {
+        padding: 10px 14px;
+        border-radius: 18px;
+      }
+
+      body.is-scrolled .brand strong {
+        font-size: 0.98rem;
+      }
+
+      body.is-scrolled .brand-author {
+        font-size: 0.75rem;
+        opacity: 0.85;
+      }
+
+      body.is-scrolled .brand span {
+        font-size: 0.82rem;
+        max-height: 1.05rem;
+        opacity: 0.82;
+      }
+
+      .theme-toggle,
+      .focus-toggle,
+      .index-toolbar-toggle,
+      .github-link,
+      .menu-toggle {
         border: 1px solid var(--border);
         background: var(--bg-panel);
         color: var(--text);
@@ -98,56 +158,51 @@
         box-shadow: var(--shadow);
       }
 
-      .menu-toggle {
-        border: 1px solid var(--border);
-        background: var(--bg-panel);
-        color: var(--text);
-        border-radius: 14px;
-        width: 46px;
-        height: 46px;
-        padding: 0;
-        cursor: pointer;
-        box-shadow: var(--shadow);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-
+      .theme-toggle:hover,
+      .focus-toggle:hover,
+      .index-toolbar-toggle:hover,
+      .github-link:hover,
       .menu-toggle:hover {
         background: var(--bg-panel-soft);
       }
 
-      .menu-toggle-bars {
+      .github-link {
         display: inline-flex;
-        flex-direction: column;
-        gap: 5px;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
       }
 
-      .menu-toggle-bars span {
-        display: block;
-        width: 18px;
-        height: 2px;
-        border-radius: 999px;
-        background: currentColor;
+      .github-link svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
       }
 
       .layout {
         display: grid;
-        grid-template-columns: 290px minmax(0, 1fr);
-        gap: 24px;
+        grid-template-columns: 300px minmax(0, 1fr);
+        gap: 28px;
         align-items: start;
+        min-width: 0;
       }
 
       .main-area {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) 260px;
-        gap: 24px;
+        grid-template-columns: minmax(0, 1fr) minmax(240px, 300px);
+        gap: 28px;
         align-items: start;
+        min-width: 0;
       }
 
       .sidebar {
         position: sticky;
-        top: 24px;
+        top: var(--topbar-offset);
         display: flex;
         flex-direction: column;
         gap: 18px;
@@ -167,17 +222,56 @@
       }
 
       .sidebar-section + .sidebar-section {
-        margin-top: 18px;
-        padding-top: 18px;
-        border-top: 1px solid var(--border);
+        margin-top: 12px;
       }
 
-      .sidebar-section h3 {
-        margin: 0 0 10px;
+      .sidebar-section {
+        border-top: 1px solid var(--border);
+        padding-top: 12px;
+      }
+
+      .sidebar-section:first-of-type {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .sidebar-section-summary {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        cursor: pointer;
+        user-select: none;
+        margin-bottom: 10px;
+      }
+
+      .sidebar-section-summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .sidebar-section-summary h3 {
+        margin: 0;
         font-size: 0.95rem;
         color: var(--text-soft);
         letter-spacing: 0.02em;
         text-transform: uppercase;
+      }
+
+      .sidebar-section-heading {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .sidebar-section-summary::after {
+        content: "+";
+        color: var(--text-soft);
+        font-size: 1rem;
+      }
+
+      .sidebar-section[open] .sidebar-section-summary::after {
+        content: "-";
       }
 
       .sidebar-links {
@@ -191,7 +285,9 @@
       }
 
       .sidebar-links a {
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 10px;
         text-decoration: none;
         color: inherit;
         padding: 8px 10px;
@@ -207,21 +303,73 @@
         border: 1px solid rgba(34, 197, 94, 0.2);
       }
 
+      .sidebar-links a.is-current-parent {
+        background: rgba(125, 211, 252, 0.08);
+        border: 1px solid rgba(125, 211, 252, 0.14);
+      }
+
+      .sidebar-sublinks {
+        list-style: none;
+        padding: 6px 0 0 16px;
+        margin: 4px 0 2px;
+        border-left: 1px solid var(--border);
+      }
+
+      .sidebar-sublinks.is-collapsed {
+        display: none;
+      }
+
+      body.sidebar-expand-all .sidebar-sublinks.is-collapsed {
+        display: block;
+      }
+
+      .sidebar-sublinks li + li {
+        margin-top: 4px;
+      }
+
+      .sidebar-sublinks a {
+        padding: 7px 10px;
+        color: var(--text-soft);
+      }
+
+      .nav-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.2rem;
+        flex: 0 0 1.2rem;
+        opacity: 0.92;
+      }
+
+      .nav-title {
+        min-width: 0;
+      }
+
       .content {
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent), var(--bg-panel);
         border: 1px solid var(--border);
         border-radius: 22px;
         padding: 32px;
         box-shadow: var(--shadow);
+        min-width: 0;
       }
 
       .page-index-panel {
         position: sticky;
-        top: 24px;
+        top: var(--topbar-offset);
+      }
+
+      .page-index-panel[hidden] {
+        display: none;
       }
 
       h1, h2, h3 {
         line-height: 1.25;
+      }
+
+      h1, h2, h3, h4, h5, h6,
+      [id] {
+        scroll-margin-top: calc(var(--topbar-offset) + 18px);
       }
 
       h1 {
@@ -249,10 +397,11 @@
       }
 
       pre {
-        background: var(--code-bg);
-        border: 1px solid var(--border);
-        border-radius: 14px;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
         padding: 16px;
+        margin: 0;
         overflow-x: auto;
       }
 
@@ -262,24 +411,90 @@
       }
 
       .code-shell {
-        position: relative;
+        margin: 1.2rem 0;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        background: var(--code-bg);
+      }
+
+      .code-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border);
+        background: color-mix(in srgb, var(--bg-panel-soft) 72%, transparent);
+      }
+
+      .code-title {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+        color: var(--text-soft);
+        font-size: 0.86rem;
+        font-family: "Cascadia Code", "Fira Code", "JetBrains Mono", monospace;
+      }
+
+      .code-title-icon {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 18px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      .code-title-icon.is-generic {
+        background-image: url("{{ '/assets/icons/file.svg' | relative_url }}");
+      }
+
+      .code-title-icon.is-terraform {
+        background-image: url("{{ '/assets/icons/terraform.svg' | relative_url }}");
+      }
+
+      .code-title-icon.is-terminal {
+        background-image: url("{{ '/assets/icons/terminal.svg' | relative_url }}");
       }
 
       .copy-button {
-        position: absolute;
-        top: 12px;
-        right: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         border: 1px solid var(--border);
         background: var(--bg-panel);
         color: var(--text);
-        border-radius: 999px;
-        padding: 7px 12px;
+        border-radius: 12px;
+        width: 38px;
+        height: 38px;
+        padding: 0;
         cursor: pointer;
-        font-size: 0.85rem;
+        transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
       }
 
       .copy-button:hover {
         background: var(--bg-panel-soft);
+        transform: translateY(-1px);
+      }
+
+      .copy-button svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .copy-button.is-copied {
+        color: var(--accent);
+        border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+        background: color-mix(in srgb, var(--accent) 14%, transparent);
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 12%, transparent);
+      }
+
+      .copy-button.is-error {
+        color: #ef4444;
+        border-color: rgba(239, 68, 68, 0.45);
+        background: rgba(239, 68, 68, 0.12);
       }
 
       blockquote {
@@ -293,6 +508,11 @@
       table {
         width: 100%;
         border-collapse: collapse;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
       }
 
       th, td {
@@ -309,6 +529,32 @@
       .page-index h2 {
         margin: 0 0 10px;
         font-size: 1.05rem;
+      }
+
+      .panel-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      .panel-header h2 {
+        margin: 0;
+      }
+
+      .panel-toggle {
+        border: 1px solid var(--border);
+        background: var(--bg-panel-soft);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 6px 10px;
+        cursor: pointer;
+        font-size: 0.8rem;
+      }
+
+      .panel-toggle:hover {
+        background: var(--bg-panel);
       }
 
       .page-index ul {
@@ -370,7 +616,61 @@
         display: none;
       }
 
+      .page-index-hidden .main-area {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .page-index-hidden .page-index-panel {
+        display: none;
+      }
+
+      .focus-mode .layout,
+      .focus-mode .main-area {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .focus-mode .sidebar,
+      .focus-mode .page-index-panel {
+        display: none;
+      }
+
+      @media (max-width: 1360px) {
+        :root {
+          --topbar-offset: 118px;
+        }
+
+        .layout {
+          grid-template-columns: 270px minmax(0, 1fr);
+        }
+
+        .main-area {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .page-index-panel {
+          position: static;
+        }
+      }
+
+      @media (max-width: 980px) {
+        :root {
+          --topbar-offset: 108px;
+        }
+
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: static;
+        }
+      }
+
       @media (max-width: 720px) {
+        :root {
+          --topbar-offset: 98px;
+        }
+
         .shell {
           padding: 16px 14px 48px;
         }
@@ -387,6 +687,7 @@
 
         .topbar-actions {
           width: 100%;
+          justify-content: flex-start;
         }
 
         .layout {
@@ -412,16 +713,18 @@
       <div class="topbar">
         <a class="brand" href="{{ '/' | relative_url }}">
           <strong>{{ site.title }}</strong>
-          <span>{{ site.description }}</span>
+          <small class="brand-author">Por Andrew Ramires</small>
         </a>
         <div class="topbar-actions">
+          <a class="github-link" href="https://github.com/malacration" target="_blank" rel="noopener noreferrer" aria-label="Abrir perfil GitHub de Andrew Ramires" title="Perfil GitHub de Andrew Ramires">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12A11.5 11.5 0 0 0 8.36 22.93c.58.11.79-.25.79-.56v-2.16c-3.18.69-3.85-1.35-3.85-1.35-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.69.08-.69 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.69 1.25 3.35.96.1-.74.4-1.25.72-1.54-2.54-.29-5.22-1.27-5.22-5.67 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.18-1.49 3.14-1.18 3.14-1.18.63 1.59.24 2.77.12 3.06.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.37-5.25 5.66.41.35.78 1.05.78 2.12v3.14c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            <span>Perfil GitHub</span>
+          </a>
           <button class="menu-toggle" type="button" id="menu-toggle" aria-label="Ocultar menu" title="Ocultar menu">
-            <span class="menu-toggle-bars" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
+            <span>Menu</span>
           </button>
+          <button class="index-toolbar-toggle" type="button" id="page-index-toolbar-toggle" hidden>Índice</button>
+          <button class="focus-toggle" type="button" id="focus-toggle">Modo foco</button>
           <button class="theme-toggle" type="button" id="theme-toggle">Alternar tema</button>
         </div>
       </div>
@@ -429,23 +732,74 @@
       <div class="layout">
         <aside class="sidebar" id="sidebar">
           <nav class="sidebar-panel">
-            <h2>Menu</h2>
+            <div class="panel-header">
+              <h2>Menu</h2>
+              <button class="panel-toggle" type="button" id="sidebar-sections-toggle" aria-label="Expandir tudo" title="Expandir tudo">Expandir tudo</button>
+            </div>
             {% for section in site.data.navigation.sections %}
-            <section class="sidebar-section">
-              <h3>{{ section.title }}</h3>
+            {% assign section_has_current = false %}
+            {% for item in section.items %}
+              {% if page.url == item.url %}
+                {% assign section_has_current = true %}
+              {% endif %}
+              {% if item.children %}
+                {% for child in item.children %}
+                  {% if page.url == child.url %}
+                    {% assign section_has_current = true %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+            <details class="sidebar-section" data-sidebar-section{% if section_has_current %} open{% endif %}>
+              <summary class="sidebar-section-summary">
+                <h3 class="sidebar-section-heading">
+                  {% if section.icon %}
+                  <span class="nav-icon" aria-hidden="true">{{ section.icon }}</span>
+                  {% endif %}
+                  <span>{{ section.title }}</span>
+                </h3>
+              </summary>
               <ul class="sidebar-links">
                 {% for item in section.items %}
                 {% assign item_url = item.url | relative_url %}
                 {% assign is_current = false %}
+                {% assign has_current_child = false %}
                 {% if page.url == item.url %}
                   {% assign is_current = true %}
                 {% endif %}
-                <li>
-                  <a href="{{ item_url }}"{% if is_current %} class="is-current"{% endif %}>{{ item.title }}</a>
+                {% if item.children %}
+                  {% for child in item.children %}
+                    {% if page.url == child.url %}
+                      {% assign has_current_child = true %}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+                <li{% if item.level %} class="level-{{ item.level }}"{% endif %}>
+                  <a href="{{ item_url }}"{% if is_current %} class="is-current"{% elsif has_current_child %} class="is-current-parent"{% endif %}>
+                    {% if item.icon %}
+                    <span class="nav-icon" aria-hidden="true">{{ item.icon }}</span>
+                    {% endif %}
+                    <span class="nav-title">{{ item.title }}</span>
+                  </a>
+                  {% if item.children %}
+                  <ul class="sidebar-sublinks{% unless has_current_child or is_current %} is-collapsed{% endunless %}">
+                    {% for child in item.children %}
+                    {% assign child_url = child.url | relative_url %}
+                    <li>
+                      <a href="{{ child_url }}"{% if page.url == child.url %} class="is-current"{% endif %}>
+                        {% if child.icon %}
+                        <span class="nav-icon" aria-hidden="true">{{ child.icon }}</span>
+                        {% endif %}
+                        <span class="nav-title">{{ child.title }}</span>
+                      </a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
                 </li>
                 {% endfor %}
               </ul>
-            </section>
+            </details>
             {% endfor %}
           </nav>
         </aside>
@@ -483,7 +837,10 @@
 
           <aside class="page-index-panel" id="page-index" hidden>
             <nav class="sidebar-panel page-index">
-              <h2>Índice da página</h2>
+              <div class="panel-header">
+                <h2>Índice da página</h2>
+                <button class="panel-toggle" type="button" id="page-index-toggle" aria-label="Ocultar índice da página" title="Ocultar índice da página">Ocultar</button>
+              </div>
               <ul id="page-index-list"></ul>
             </nav>
           </aside>
@@ -518,7 +875,10 @@
         }
 
         var menuButton = document.getElementById("menu-toggle");
+        var focusButton = document.getElementById("focus-toggle");
+        var indexToolbarButton = document.getElementById("page-index-toolbar-toggle");
         var sidebarHidden = localStorage.getItem("sidebarHidden") === "true";
+        var focusMode = localStorage.getItem("focusMode") === "true";
 
         function applySidebarState(hidden) {
           document.body.classList.toggle("sidebar-hidden", hidden);
@@ -526,11 +886,32 @@
             var label = hidden ? "Mostrar menu" : "Ocultar menu";
             menuButton.setAttribute("aria-label", label);
             menuButton.setAttribute("title", label);
+            menuButton.setAttribute("aria-pressed", hidden ? "false" : "true");
           }
           localStorage.setItem("sidebarHidden", hidden ? "true" : "false");
         }
 
+        function applyFocusMode(enabled) {
+          document.body.classList.toggle("focus-mode", enabled);
+          if (focusButton) {
+            var label = enabled ? "Sair do foco" : "Modo foco";
+            focusButton.textContent = label;
+            focusButton.setAttribute("aria-label", label);
+            focusButton.setAttribute("title", label);
+            focusButton.setAttribute("aria-pressed", enabled ? "true" : "false");
+          }
+          localStorage.setItem("focusMode", enabled ? "true" : "false");
+        }
+
         applySidebarState(sidebarHidden);
+        applyFocusMode(focusMode);
+
+        function applyScrollHeaderState() {
+          document.body.classList.toggle("is-scrolled", window.scrollY > 24);
+        }
+
+        applyScrollHeaderState();
+        window.addEventListener("scroll", applyScrollHeaderState, { passive: true });
 
         if (menuButton) {
           menuButton.addEventListener("click", function () {
@@ -539,37 +920,513 @@
           });
         }
 
+        if (focusButton) {
+          focusButton.addEventListener("click", function () {
+            var enabled = document.body.classList.contains("focus-mode");
+            applyFocusMode(!enabled);
+          });
+        }
+
+        var sidebarSectionsToggle = document.getElementById("sidebar-sections-toggle");
+        var sidebarSections = Array.prototype.slice.call(document.querySelectorAll("[data-sidebar-section]"));
+
+        function updateSidebarSectionsToggle() {
+          if (!sidebarSectionsToggle || !sidebarSections.length) {
+            return;
+          }
+
+          var allOpen = document.body.classList.contains("sidebar-expand-all") && sidebarSections.every(function (section) {
+            return section.open;
+          });
+
+          var label = allOpen ? "Recolher tudo" : "Expandir tudo";
+          sidebarSectionsToggle.textContent = label;
+          sidebarSectionsToggle.setAttribute("aria-label", label);
+          sidebarSectionsToggle.setAttribute("title", label);
+          sidebarSectionsToggle.setAttribute("aria-pressed", allOpen ? "true" : "false");
+        }
+
+        if (sidebarSectionsToggle && sidebarSections.length) {
+          sidebarSectionsToggle.addEventListener("click", function () {
+            var allOpen = document.body.classList.contains("sidebar-expand-all") && sidebarSections.every(function (section) {
+              return section.open;
+            });
+
+            sidebarSections.forEach(function (section) {
+              section.open = !allOpen;
+            });
+
+            document.body.classList.toggle("sidebar-expand-all", !allOpen);
+
+            updateSidebarSectionsToggle();
+          });
+
+          sidebarSections.forEach(function (section) {
+            section.addEventListener("toggle", function () {
+              if (!section.open) {
+                document.body.classList.remove("sidebar-expand-all");
+              }
+              updateSidebarSectionsToggle();
+            });
+          });
+
+          updateSidebarSectionsToggle();
+        }
+
+        function isExternalHttpUrl(href) {
+          if (!href) {
+            return false;
+          }
+
+          try {
+            var url = new URL(href, window.location.origin);
+            var isHttp = url.protocol === "http:" || url.protocol === "https:";
+            return isHttp && url.origin !== window.location.origin;
+          } catch (error) {
+            return false;
+          }
+        }
+
+        function decorateExternalLinks(scope) {
+          if (!scope) {
+            return;
+          }
+
+          var links = scope.querySelectorAll("a[href]");
+          links.forEach(function (link) {
+            if (isExternalHttpUrl(link.getAttribute("href"))) {
+              link.setAttribute("target", "_blank");
+              link.setAttribute("rel", "noopener noreferrer");
+            }
+          });
+        }
+
+        function linkifyPlainUrls(scope) {
+          if (!scope) {
+            return;
+          }
+
+          var walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
+            acceptNode: function (node) {
+              if (!node.nodeValue || !/https?:\/\//.test(node.nodeValue)) {
+                return NodeFilter.FILTER_REJECT;
+              }
+
+              var parent = node.parentElement;
+              if (!parent) {
+                return NodeFilter.FILTER_REJECT;
+              }
+
+              if (parent.closest("a, code, pre, script, style, button, .page-nav")) {
+                return NodeFilter.FILTER_REJECT;
+              }
+
+              return NodeFilter.FILTER_ACCEPT;
+            }
+          });
+
+          var textNodes = [];
+          while (walker.nextNode()) {
+            textNodes.push(walker.currentNode);
+          }
+
+          textNodes.forEach(function (node) {
+            var text = node.nodeValue;
+            var regex = /https?:\/\/[^\s<>"']+/g;
+            var lastIndex = 0;
+            var match;
+            var fragment = document.createDocumentFragment();
+            var hasMatch = false;
+
+            while ((match = regex.exec(text)) !== null) {
+              hasMatch = true;
+              var rawUrl = match[0];
+              var cleanUrl = rawUrl.replace(/[),.;!?]+$/, "");
+              var trailing = rawUrl.slice(cleanUrl.length);
+
+              if (match.index > lastIndex) {
+                fragment.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+              }
+
+              var link = document.createElement("a");
+              link.href = cleanUrl;
+              link.textContent = cleanUrl;
+              fragment.appendChild(link);
+
+              if (trailing) {
+                fragment.appendChild(document.createTextNode(trailing));
+              }
+
+              lastIndex = match.index + rawUrl.length;
+            }
+
+            if (!hasMatch) {
+              return;
+            }
+
+            if (lastIndex < text.length) {
+              fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+            }
+
+            node.parentNode.replaceChild(fragment, node);
+          });
+        }
+
         var blocks = document.querySelectorAll("pre");
+        var copyIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>';
+        var checkIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>';
+        var errorIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8v5"></path><path d="M12 16h.01"></path><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>';
+
+        function getCodeLanguageLabel(pre) {
+          var code = pre.querySelector("code");
+          if (!code) {
+            return "Código";
+          }
+
+          var className = code.className || "";
+          var match = className.match(/language-([a-z0-9_-]+)/i);
+          if (!match) {
+            return "Código";
+          }
+
+          var language = match[1].toLowerCase();
+          var labels = {
+            hcl: "HCL",
+            bash: "Terminal",
+            shell: "Terminal",
+            zsh: "Terminal",
+            sh: "Terminal",
+            yaml: "YAML",
+            yml: "YAML",
+            json: "JSON",
+            html: "HTML",
+            css: "CSS",
+            javascript: "JavaScript",
+            js: "JavaScript",
+            markdown: "Markdown",
+            md: "Markdown",
+            plaintext: "Código"
+          };
+
+          return labels[language] || language.toUpperCase();
+        }
+
+        function normalizeFileReference(value) {
+          if (!value) {
+            return "";
+          }
+
+          var normalized = value.trim().replace(/^["'`]+|["'`.,:;!?]+$/g, "");
+          if (/^(main|provider|output|variables)\.tf$/i.test(normalized)) {
+            return normalized;
+          }
+          if (/^terraform\.tfvars$/i.test(normalized)) {
+            return normalized;
+          }
+          if (/^[A-Za-z0-9_./-]+\.[A-Za-z0-9_-]+$/.test(normalized)) {
+            return normalized;
+          }
+
+          return "";
+        }
+
+        function extractFileReference(element) {
+          if (!element) {
+            return "";
+          }
+
+          var codeNodes = element.querySelectorAll("code");
+          for (var index = codeNodes.length - 1; index >= 0; index -= 1) {
+            var codeReference = normalizeFileReference(codeNodes[index].textContent || "");
+            if (codeReference) {
+              return codeReference;
+            }
+          }
+
+          var textMatches = (element.textContent || "").match(/\b[A-Za-z0-9_./-]+\.[A-Za-z0-9_-]+\b/g);
+          if (textMatches && textMatches.length > 0) {
+            for (var textIndex = textMatches.length - 1; textIndex >= 0; textIndex -= 1) {
+              var textReference = normalizeFileReference(textMatches[textIndex]);
+              if (textReference) {
+                return textReference;
+              }
+            }
+          }
+
+          return "";
+        }
+
+        function inferFileByCode(pre) {
+          var code = pre.querySelector("code");
+          var text = (code ? code.textContent : pre.textContent || "").trim();
+          var label = getCodeLanguageLabel(pre);
+
+          if (label === "Terminal") {
+            return "Terminal";
+          }
+
+          if (!text) {
+            return label;
+          }
+
+          if (/^(tofu|terraform|aws|docker|git|ls|cd|cat|pwd|mkdir|rm|mv|cp|echo)\b/m.test(text) || /(^|\n)\s*[A-Z_]+=.+/m.test(text)) {
+            return "Terminal";
+          }
+
+          if (/^\s*provider\s+"[^"]+"/m.test(text)) {
+            return "provider.tf";
+          }
+
+          if (/^\s*variable\s+"[^"]+"/m.test(text)) {
+            return "variables.tf";
+          }
+
+          if (/^\s*output\s+"[^"]+"/m.test(text)) {
+            return "output.tf";
+          }
+
+          if (/^\s*resource\s+"aws_subnet"\s+"private_subnets"/m.test(text)) {
+            return "private-subnet.tf";
+          }
+
+          if (/^\s*resource\s+"aws_(eip|nat_gateway)"/m.test(text)) {
+            return "nat.tf";
+          }
+
+          if (/^\s*resource\s+"aws_route_table"\s+"private"/m.test(text)) {
+            return "nat.tf";
+          }
+
+          if (/^\s*resource\s+"aws_route_table_association"\s+"private"/m.test(text)) {
+            return "nat.tf";
+          }
+
+          if (/^\s*resource\s+"aws_iam_role"\s+"ec2_ssm"/m.test(text)) {
+            return "ssm.tf";
+          }
+
+          if (/^\s*resource\s+"aws_iam_role_policy_attachment"\s+"ec2_ssm_core"/m.test(text)) {
+            return "ssm.tf";
+          }
+
+          if (/^\s*resource\s+"aws_iam_instance_profile"\s+"ec2_ssm"/m.test(text)) {
+            return "ssm.tf";
+          }
+
+          if (/^\s*resource\s+"aws_(lb|lb_target_group|lb_listener|lb_target_group_attachment)"/m.test(text)) {
+            return "lb.tf";
+          }
+
+          if (/^\s*resource\s+"aws_security_group"\s+"alb"/m.test(text)) {
+            return "lb.tf";
+          }
+
+          if (/^\s*(resource|data|module)\s+"[^"]+"/m.test(text)) {
+            return "main.tf";
+          }
+
+          if (/^\s*[A-Za-z0-9_]+\s*=\s*var\.[A-Za-z0-9_]+/m.test(text)) {
+            return "main.tf";
+          }
+
+          if (/^\s*[A-Za-z0-9_]+\s*=\s*(aws|data|module)\.[A-Za-z0-9_]+/m.test(text)) {
+            return "main.tf";
+          }
+
+          if (/^\s*[A-Za-z0-9_]+\s*=\s*(true|false|null|\[[\s\S]*\])\s*$/m.test(text)) {
+            return "main.tf";
+          }
+
+          if (/^\s*[A-Za-z0-9_]+\s*=\s*.+$/m.test(text) && !/[{}]/.test(text)) {
+            return "terraform.tfvars";
+          }
+
+          if (label === "Código") {
+            return "main.tf";
+          }
+
+          return label;
+        }
+
+        function getCodeTitle(pre) {
+          var previous = pre.previousElementSibling;
+          var scanned = 0;
+
+          while (previous && scanned < 5) {
+            if (/^H[1-6]$/.test(previous.tagName) || previous.tagName === "PRE") {
+              break;
+            }
+
+            var fileReference = extractFileReference(previous);
+            if (fileReference) {
+              return fileReference;
+            }
+
+            previous = previous.previousElementSibling;
+            scanned += 1;
+          }
+
+          return inferFileByCode(pre);
+        }
+
+        function getCodeTitleKind(title) {
+          if (!title) {
+            return "generic";
+          }
+
+          if (/\.tf(vars)?$/i.test(title)) {
+            return "terraform";
+          }
+
+          if (/^terminal$/i.test(title)) {
+            return "terminal";
+          }
+
+          return "generic";
+        }
+
+        function setCopyButtonState(button, state, label) {
+          button.classList.remove("is-copied", "is-error");
+
+          if (state === "copied") {
+            button.classList.add("is-copied");
+            button.innerHTML = checkIcon;
+            button.setAttribute("aria-label", label + " copiado");
+            button.setAttribute("title", label + " copiado");
+            return;
+          }
+
+          if (state === "error") {
+            button.classList.add("is-error");
+            button.innerHTML = errorIcon;
+            button.setAttribute("aria-label", "Falha ao copiar " + label);
+            button.setAttribute("title", "Falha ao copiar " + label);
+            return;
+          }
+
+          button.innerHTML = copyIcon;
+          button.setAttribute("aria-label", "Copiar " + label);
+          button.setAttribute("title", "Copiar " + label);
+        }
+
+        function copyText(text) {
+          if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+            return navigator.clipboard.writeText(text);
+          }
+
+          return new Promise(function (resolve, reject) {
+            var textarea = document.createElement("textarea");
+            textarea.value = text;
+            textarea.setAttribute("readonly", "");
+            textarea.style.position = "fixed";
+            textarea.style.top = "-9999px";
+            textarea.style.left = "-9999px";
+            document.body.appendChild(textarea);
+            textarea.focus();
+            textarea.select();
+
+            try {
+              var successful = document.execCommand("copy");
+              document.body.removeChild(textarea);
+              if (!successful) {
+                reject(new Error("copy failed"));
+                return;
+              }
+              resolve();
+            } catch (error) {
+              document.body.removeChild(textarea);
+              reject(error);
+            }
+          });
+        }
+
         blocks.forEach(function (pre) {
           if (pre.parentElement && pre.parentElement.classList.contains("code-shell")) {
             return;
           }
 
+          var title = getCodeTitle(pre);
           var wrapper = document.createElement("div");
           wrapper.className = "code-shell";
           pre.parentNode.insertBefore(wrapper, pre);
-          wrapper.appendChild(pre);
+
+          var header = document.createElement("div");
+          header.className = "code-header";
+
+          var headerTitle = document.createElement("span");
+          headerTitle.className = "code-title";
+          var titleKind = getCodeTitleKind(title);
+
+          var titleIcon = document.createElement("span");
+          titleIcon.className = "code-title-icon";
+          if (titleKind === "terraform") {
+            titleIcon.classList.add("is-terraform");
+          } else if (titleKind === "terminal") {
+            titleIcon.classList.add("is-terminal");
+          } else {
+            titleIcon.classList.add("is-generic");
+          }
+          titleIcon.setAttribute("aria-hidden", "true");
+          headerTitle.appendChild(titleIcon);
+
+          headerTitle.textContent = title;
+          headerTitle.prepend(titleIcon);
+          header.appendChild(headerTitle);
 
           var copy = document.createElement("button");
           copy.type = "button";
           copy.className = "copy-button";
-          copy.textContent = "Copiar";
-          wrapper.appendChild(copy);
+          setCopyButtonState(copy, "idle", title);
+          header.appendChild(copy);
+
+          wrapper.appendChild(header);
+          wrapper.appendChild(pre);
 
           copy.addEventListener("click", function () {
             var text = pre.innerText;
-            navigator.clipboard.writeText(text).then(function () {
-              copy.textContent = "Copiado";
+            copyText(text).then(function () {
+              setCopyButtonState(copy, "copied", title);
               setTimeout(function () {
-                copy.textContent = "Copiar";
+                setCopyButtonState(copy, "idle", title);
+              }, 1400);
+            }).catch(function () {
+              setCopyButtonState(copy, "error", title);
+              setTimeout(function () {
+                setCopyButtonState(copy, "idle", title);
               }, 1400);
             });
           });
         });
 
         var content = document.querySelector(".content");
+        if (content) {
+          linkifyPlainUrls(content);
+          decorateExternalLinks(content);
+        }
+
         var indexBox = document.getElementById("page-index");
         var indexList = document.getElementById("page-index-list");
+        var indexToggle = document.getElementById("page-index-toggle");
+        var pageIndexHidden = localStorage.getItem("pageIndexHidden") === "true";
+
+        function applyPageIndexState(hidden) {
+          if (!indexBox || !indexList || !indexToggle) {
+            return;
+          }
+
+          document.body.classList.toggle("page-index-hidden", hidden);
+          indexToggle.textContent = "Ocultar";
+          indexToggle.setAttribute("aria-label", "Ocultar índice da página");
+          indexToggle.setAttribute("title", "Ocultar índice da página");
+          if (indexToolbarButton) {
+            var label = hidden ? "Mostrar índice" : "Ocultar índice";
+            indexToolbarButton.textContent = label;
+            indexToolbarButton.setAttribute("aria-label", label);
+            indexToolbarButton.setAttribute("title", label);
+            indexToolbarButton.setAttribute("aria-pressed", hidden ? "false" : "true");
+          }
+          localStorage.setItem("pageIndexHidden", hidden ? "true" : "false");
+        }
 
         if (content && indexBox && indexList) {
           var headings = content.querySelectorAll("h2, h3");
@@ -606,6 +1463,21 @@
               indexList.appendChild(item);
             });
             indexBox.hidden = false;
+            if (indexToolbarButton) {
+              indexToolbarButton.hidden = false;
+            }
+            applyPageIndexState(pageIndexHidden);
+            if (indexToggle) {
+              indexToggle.addEventListener("click", function () {
+                applyPageIndexState(true);
+              });
+            }
+            if (indexToolbarButton) {
+              indexToolbarButton.addEventListener("click", function () {
+                var isHidden = document.body.classList.contains("page-index-hidden");
+                applyPageIndexState(!isHidden);
+              });
+            }
           }
         }
       })();

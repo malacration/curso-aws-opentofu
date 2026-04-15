@@ -12,6 +12,8 @@ next_url: /diretorio-e-vscode/
 
 Este guia usa o repositório oficial do OpenTofu para distribuições baseadas em `.deb`, como Ubuntu e Debian.
 
+<blockquote><strong>⚡ Visão rápida:</strong> depois deste passo, a máquina fica pronta para executar `tofu init`, `tofu plan`, `tofu apply` e as fases práticas do curso.</blockquote>
+
 ## 5.1 Instalar os pacotes necessários
 
 ```bash

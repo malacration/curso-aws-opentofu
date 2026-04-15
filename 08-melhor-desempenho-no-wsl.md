@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 8. Melhor desempenho no WSL
+title: 2.1 Melhor desempenho no WSL
 permalink: /wsl-desempenho/
 prev_title: 2. Ubuntu no Windows (WSL)
 prev_url: /ubuntu-no-windows-wsl/
@@ -8,11 +8,13 @@ next_title: 3. Inspeção SSL e AWS_CA_BUNDLE
 next_url: /inspecao-ssl-ca-bundle/
 ---
 
-# 8. Melhor desempenho no WSL
+# 2.1 Melhor desempenho no WSL
 
 Se você estiver no Windows usando `WSL 2`, o principal ganho de desempenho vem de manter os arquivos do curso dentro do filesystem Linux do Ubuntu, e não dentro do disco do Windows montado em `/mnt/c`.
 
-## 8.1 Caminho recomendado
+<blockquote><strong>⚡ Visão rápida:</strong> guardar o projeto dentro do filesystem Linux evita lentidão e melhora muito a experiência com terminal, editor e ferramentas de infraestrutura.</blockquote>
+
+## 2.1.1 Caminho recomendado
 
 Use um caminho como este dentro do Ubuntu:
 
@@ -27,7 +29,7 @@ Exemplo de pasta para este curso:
 ~/cursos/aws-tofu
 ```
 
-## 8.2 Caminho a evitar
+## 2.1.2 Caminho a evitar
 
 Evite trabalhar em caminhos como:
 
@@ -48,14 +50,14 @@ Esses caminhos costumam ficar mais lentos para:
 - instalação de dependências
 - leitura e escrita intensiva de arquivos
 
-## 8.3 Melhor forma de usar no curso
+## 2.1.3 Melhor forma de usar no curso
 
 1. Abra o Ubuntu.
 2. Entre em uma pasta dentro do seu `home`.
 3. Mantenha o projeto do curso dentro desse caminho Linux.
 4. Abra a pasta pelo VS Code usando a extensão `WSL`.
 
-## 8.4 Exemplo prático
+## 2.1.4 Exemplo prático
 
 Se você recebeu os arquivos do curso no Windows, prefira copiar ou clonar novamente dentro do Ubuntu:
 
@@ -67,7 +69,7 @@ git clone <url-do-repositorio>
 
 Se o material não estiver em um repositório Git, você pode copiar os arquivos para dentro do Ubuntu e seguir trabalhando a partir de lá.
 
-## 8.5 VS Code no WSL
+## 2.1.5 VS Code no WSL
 
 A forma mais eficiente de editar no Windows com `WSL 2` é:
 
@@ -81,7 +83,7 @@ code .
 
 Assim, o editor roda no Windows, mas os arquivos permanecem no Linux, o que normalmente entrega a melhor combinação de desempenho e compatibilidade.
 
-## 8.6 Ajuste opcional de recursos do WSL
+## 2.1.6 Ajuste opcional de recursos do WSL
 
 Se a máquina tiver memória e CPU suficientes, você também pode limitar melhor os recursos do WSL criando o arquivo `%UserProfile%\.wslconfig` no Windows.
 

@@ -14,6 +14,8 @@ optional_url: /ubuntu-no-windows-wsl/
 
 Se a rede da empresa intercepta conexões HTTPS, pode ser necessário confiar na CA corporativa antes de usar `curl`, `apt` ou `aws`.
 
+<blockquote><strong>⚡ Visão rápida:</strong> este passo existe para evitar falhas de certificado e garantir que downloads, login e instalação funcionem dentro de redes corporativas.</blockquote>
+
 ## 3.1 Entrar na raiz do projeto
 
 Depois de clonar o projeto, entre na raiz do repositório antes de executar os scripts:

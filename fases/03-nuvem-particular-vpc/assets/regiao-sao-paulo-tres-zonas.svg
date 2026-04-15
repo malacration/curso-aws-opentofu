@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="420" viewBox="0 0 1100 420" fill="none">
+  <rect width="1100" height="420" rx="24" fill="#0f172a"/>
+  <rect x="70" y="60" width="960" height="300" rx="28" fill="#111827" stroke="#22c55e" stroke-width="3"/>
+  <text x="102" y="108" fill="#e5eefc" font-size="30" font-family="Segoe UI, Arial, sans-serif" font-weight="700">Região São Paulo - sa-east-1</text>
+  <text x="102" y="142" fill="#aebdd7" font-size="18" font-family="Segoe UI, Arial, sans-serif">Na documentação oficial de AZ IDs, a região São Paulo aparece com 3 zonas.</text>
+
+  <rect x="140" y="190" width="220" height="110" rx="18" fill="#172033" stroke="#7dd3fc" stroke-width="2"/>
+  <text x="185" y="238" fill="#7dd3fc" font-size="24" font-family="Segoe UI, Arial, sans-serif" font-weight="700">sae1-az1</text>
+  <text x="185" y="270" fill="#e5eefc" font-size="18" font-family="Segoe UI, Arial, sans-serif">São Paulo / Brasil</text>
+
+  <rect x="440" y="190" width="220" height="110" rx="18" fill="#172033" stroke="#7dd3fc" stroke-width="2"/>
+  <text x="485" y="238" fill="#7dd3fc" font-size="24" font-family="Segoe UI, Arial, sans-serif" font-weight="700">sae1-az2</text>
+  <text x="485" y="270" fill="#e5eefc" font-size="18" font-family="Segoe UI, Arial, sans-serif">São Paulo / Brasil</text>
+
+  <rect x="740" y="190" width="220" height="110" rx="18" fill="#172033" stroke="#7dd3fc" stroke-width="2"/>
+  <text x="785" y="238" fill="#7dd3fc" font-size="24" font-family="Segoe UI, Arial, sans-serif" font-weight="700">sae1-az3</text>
+  <text x="785" y="270" fill="#e5eefc" font-size="18" font-family="Segoe UI, Arial, sans-serif">São Paulo / Brasil</text>
+</svg>

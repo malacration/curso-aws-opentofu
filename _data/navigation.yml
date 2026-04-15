@@ -1,23 +1,135 @@
 sections:
-  - title: Guia Principal
+  - title: Pré-requisitos
+    icon: "🧰"
     items:
       - title: 1. Início
         url: /
+        icon: "🏠"
       - title: 2. Ubuntu no Windows (WSL)
         url: /ubuntu-no-windows-wsl/
+        icon: "🐧"
+        children:
+          - title: 2.1 Melhor desempenho no WSL
+            url: /wsl-desempenho/
+            icon: "⚡"
       - title: 3. Inspeção SSL e AWS_CA_BUNDLE
         url: /inspecao-ssl-ca-bundle/
+        icon: "🔒"
       - title: 4. Instalando a AWS CLI e Fazendo Login
         url: /aws-cli-login/
+        icon: "🔑"
       - title: 5. Instalando o OpenTofu
         url: /opentofu/
+        icon: "🧱"
       - title: 6. Diretório do Projeto e VS Code
         url: /diretorio-e-vscode/
+        icon: "📁"
       - title: 7. Conceitos do OpenTofu
         url: /conceitos-opentofu/
-      - title: 8. Melhor desempenho no WSL
-        url: /wsl-desempenho/
+        icon: "📘"
   - title: Fases
+    icon: "🗂️"
     items:
-      - title: 01. OpenTofu e Conceitos
+      - title: 1. Introdução e Estrutura do Curso
         url: /fases/01-opentofu-e-conceitos/
+        icon: "🚀"
+        children:
+          - title: 1.1 Primeiro plano
+            url: /fases/01-opentofu-e-conceitos/primeiro-plano/
+            icon: "🧪"
+          - title: 1.2 Entendendo o arquivo terraform.tfstate
+            url: /fases/01-opentofu-e-conceitos/terraform-tfstate/
+            icon: "💾"
+          - title: 1.3 Deep Dive nos Blocos do OpenTofu
+            url: /fases/01-opentofu-e-conceitos/providers-modulos-provisioners-e-backend/
+            icon: "🧩"
+          - title: 1.4 Destruindo Toda a Infraestrutura
+            url: /fases/01-opentofu-e-conceitos/destruindo-a-infra/
+            icon: "🧨"
+      - title: 2. Conectando Tofu a AWS
+        url: /fases/02-login-na-aws/
+        icon: "🔐"
+        children:
+          - title: 2.1 Como Fazer Login no OpenTofu
+            url: /fases/02-login-na-aws/como-fazer-login-no-opentofu/
+            icon: "🔑"
+          - title: 2.3 Organizando o Projeto
+            url: /fases/02-login-na-aws/separando-o-projeto-em-varios-arquivos/
+            icon: "🗃️"
+          - title: 2.4 Usando Variáveis para a Região
+            url: /fases/02-login-na-aws/usando-variaveis-para-a-regiao/
+            icon: "📦"
+          - title: 2.5 Por Que Usar tfvars e Variáveis
+            url: /fases/02-login-na-aws/por-que-usar-tfvars-e-variaveis/
+            icon: "🛡️"
+          - title: 2.6 Entendendo Módulos
+            url: /fases/02-login-na-aws/entendendo-modulos/
+            icon: "📦"
+      - title: 3. Nuvem Particular (VPC)
+        url: /fases/03-nuvem-particular-vpc/
+        icon: "🌐"
+        children:
+          - title: 3.1 Infraestrutura
+            url: /fases/03-nuvem-particular-vpc/infraestrutura/
+            icon: "🛰️"
+          - title: 3.2 Primeira VPC
+            url: /fases/03-nuvem-particular-vpc/primeira-vpc/
+            icon: "🏗️"
+          - title: 3.3 Sem ClickOps
+            url: /fases/03-nuvem-particular-vpc/sem-clickops/
+            icon: "🚫"
+          - title: 3.4 Contando Zonas de Disponibilidade
+            url: /fases/03-nuvem-particular-vpc/contando-zonas-de-disponibilidade/
+            icon: "📶"
+      - title: 4. Subnets Dinâmicas
+        url: /fases/04-subnets-dinamicas/
+        icon: "🕸️"
+        children:
+          - title: 4.1 Criando Três Subnets
+            url: /fases/04-subnets-dinamicas/criando-tres-subnets/
+            icon: "🧱"
+          - title: 4.2 CIDR em Variáveis
+            url: /fases/04-subnets-dinamicas/cidr-em-variaveis/
+            icon: "📦"
+          - title: 4.3 Recursos Dinâmicos
+            url: /fases/04-subnets-dinamicas/recursos-dinamicos/
+            icon: "🔁"
+          - title: 4.4 Subnets Públicas
+            url: /fases/04-subnets-dinamicas/subnets-publicas/
+            icon: "🌍"
+      - title: 5. EC2 com HTTP
+        url: /fases/05-ec2-http/
+        icon: "🖥️"
+        children:
+          - title: 5.1 Criando a EC2
+            url: /fases/05-ec2-http/criando-a-ec2/
+            icon: "🧱"
+          - title: 5.2 Enviando Assets HTTP
+            url: /fases/05-ec2-http/enviando-assets-http/
+            icon: "📤"
+          - title: 5.3 Acessando a Página Web
+            url: /fases/05-ec2-http/acessando-a-pagina-web/
+            icon: "🌐"
+      - title: 6. Load Balancer
+        url: /fases/06-load-balancer/
+        icon: "⚖️"
+        children:
+          - title: 6.1 Criando o Load Balancer
+            url: /fases/06-load-balancer/criando-o-load-balancer/
+            icon: "🔀"
+          - title: 6.2 Removendo o IP Público da EC2
+            url: /fases/06-load-balancer/removendo-ip-publico/
+            icon: "🔒"
+          - title: 6.3 Escalando as Instâncias
+            url: /fases/06-load-balancer/escalando-instancias/
+            icon: "📈"
+      - title: 7. Resiliência e Alta Disponibilidade
+        url: /fases/07-resiliencia/
+        icon: "🛡️"
+        children:
+          - title: 7.1 Exibindo o Hostname na Página
+            url: /fases/07-resiliencia/exibindo-o-hostname/
+            icon: "🏷️"
+          - title: 7.2 Testando a Resiliência
+            url: /fases/07-resiliencia/testando-resiliencia/
+            icon: "💥"

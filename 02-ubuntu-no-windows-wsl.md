@@ -6,13 +6,15 @@ prev_title: 1. Início
 prev_url: /
 next_title: 3. Inspeção SSL e AWS_CA_BUNDLE
 next_url: /inspecao-ssl-ca-bundle/
-optional_title: 8. Melhor desempenho no WSL
+optional_title: 2.1 Melhor desempenho no WSL
 optional_url: /wsl-desempenho/
 ---
 
 # 2. Ubuntu no Windows (WSL)
 
 Este guia cobre a preparação do `Ubuntu` dentro do `WSL 2` para quem estuda no Windows.
+
+<blockquote><strong>⚡ Visão rápida:</strong> aqui o objetivo é deixar o ambiente Linux funcional no Windows antes de avançar para AWS CLI, OpenTofu e projeto local.</blockquote>
 
 ## 2.1 Distribuição recomendada
 

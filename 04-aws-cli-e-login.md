@@ -18,6 +18,8 @@ Este guia cobre:
 - login no ambiente de treinamento;
 - uso do perfil treinamento.
 
+<blockquote><strong>⚡ Visão rápida:</strong> este é o ponto em que a autenticação com a AWS passa a existir de forma reutilizável para os próximos passos do curso.</blockquote>
+
 ## 4.1 Instalação da AWS CLI
 
 A instalação abaixo usa o instalador oficial da AWS para Linux.

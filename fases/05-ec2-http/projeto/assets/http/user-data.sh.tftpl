@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+
+apt-get update -y
+apt-get install -y apache2
+
+cat >/var/www/html/index.html <<'HTML'
+${index_html}
+HTML
+
+chown -R www-data:www-data /var/www/html
+systemctl enable apache2
+systemctl restart apache2
